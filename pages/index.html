@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo VIRTUS - Investigación en Ambientes Virtuales de Aprendizaje</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        :root {
+            /* Colores principales */
+            --color-primary: #16a34a; /* Verde principal */
+            --color-primary-hover: #15803d; /* Verde hover */
+            --color-primary-light: #86efac; /* Verde claro */
+            --color-secondary: #2563eb; /* Azul */
+            --color-secondary-hover: #1d4ed8; /* Azul hover */
+            --color-accent: #ef4444; /* Rojo */
+            --color-accent-hover: #dc2626; /* Rojo hover */
+            
+            /* Colores de fondo */
+            --color-bg-main: #e9e4d2; /* Crema principal */
+            --color-bg-nav: #bbf7d0; /* Verde claro navegación */
+            --color-bg-green-section: #dcfce7; /* Verde suave secciones */
+            --color-bg-card: #f0fdf4; /* Fondo tarjetas líneas */
+            --color-bg-footer: #111827; /* Gris oscuro footer */
+            
+            /* Colores de texto */
+            --color-text-primary: #1f2937; /* Texto principal */
+            --color-text-secondary: #4b5563; /* Texto secundario */
+            --color-text-light: #9ca3af; /* Texto claro */
+            --color-text-white: #dde9dc; /* Texto blanco */
+            --color-heading: #15803d; /* Títulos verdes */
+            
+            /* Colores de bordes */
+            --color-border-green: #86efac;
+            --color-border-blue: #93c5fd;
+            --color-border-red: #fca5a5;
+            --color-border-footer: #374151;
+            
+            /* Otros */
+            --color-white: #ffffff;
+          
+            --color-gray-400: #9ca3af;
+            --color-gray-600: #4b5563;
+            --color-gray-700: #374151;
+            --color-gray-800: #1f2937;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(180deg, var(--color-bg-main) 0%, var(--color-bg-green-section) 50%, var(--color-bg-main) 100%);
+            background-attachment: fixed;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        }
+        
+        /* Backgrounds */
+        .bg-cream {
+            background-color: var(--color-bg-main);
+        }
+        
+        .bg-nav {
+            background-color: var(--color-bg-nav);
+        }
+        
+        .bg-green-section {
+            background-color: var(--color-bg-green-section);
+        }
+        
+        .bg-card {
+            background-color: var(--color-bg-card);
+        }
+        
+        .bg-footer {
+            background-color: var(--color-bg-footer);
+        }
+        
+        /* Textos */
+        .text-heading {
+            color: var(--color-heading);
+        }
+        
+        .text-primary {
+            color: var(--color-text-primary);
+        }
+        
+        .text-secondary {
+            color: var(--color-text-secondary);
+        }
+        
+        .text-light {
+            color: var(--color-text-light);
+        }
+        
+        .text-white-custom {
+            color: var(--color-text-white);
+        }
+        
+        /* Botones */
+        .btn-primary {
+            background-color: var(--color-primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--color-primary-hover);
+        }
+        
+        .btn-secondary {
+            background-color: var(--color-secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--color-secondary-hover);
+        }
+        
+        .btn-accent {
+            background-color: var(--color-accent);
+        }
+        
+        .btn-accent:hover {
+            background-color: var(--color-accent-hover);
+        }
+        
+        .btn-gray {
+            background-color: var(--color-gray-700);
+        }
+        
+        .btn-gray:hover {
+            background-color: var(--color-gray-800);
+        }
+        
+        /* Bordes */
+        .border-green-custom {
+            border-color: var(--color-border-green);
+        }
+        
+        .border-blue-custom {
+            border-color: var(--color-border-blue);
+        }
+        
+        .border-red-custom {
+            border-color: var(--color-border-red);
+        }
+        
+        .border-footer {
+            border-color: var(--color-border-footer);
+        }
+        
+        /* Iconos y elementos especiales */
+        .icon-bg-primary {
+            background-color: var(--color-primary);
+        }
+        
+        .link-primary {
+            color: var(--color-primary);
+        }
+        
+        .link-primary:hover {
+            color: var(--color-primary-hover);
+        }
+        
+        .tag-primary {
+            color: var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navegación -->
+    <nav class="bg-nav shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="/img/VirtusBG.png" alt="Logo Virtus" class="h-12 w-12">
+                    <div>
+                        <h1 class="text-xl font-bold text-primary">Virtus</h1>
+                        <p class="text-xs text-secondary">Grupo de Investigación</p>
+                    </div>
+                </div>
+                
+                <!-- Menú -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-primary hover:text-heading font-semibold transition">INICIO</a>
+                    <a href="#investigadores" class="text-primary hover:text-heading font-semibold transition">INVESTIGADORES</a>
+                    <a href="#filosofia" class="text-primary hover:text-heading font-semibold transition">FILOSOFÍA</a>
+                    <a href="#historia" class="text-primary hover:text-heading font-semibold transition">HISTORIA</a>
+                    <a href="#contacto" class="text-primary hover:text-heading font-semibold transition">CONTÁCTANOS</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative h-screen mt-20">
+        <div class="absolute inset-0">
+            <img src="/img/backgroundUD.png" alt="Background Virtus" class="w-full h-full object-cover">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+        
+        <div class="relative container mx-auto px-6 h-full flex items-center">
+            <div class="max-w-3xl">
+                <h1 class="text-5xl md:text-6xl font-bold text-white-custom mb-6 leading-tight">
+                    GRUPO DE INVESTIGACIÓN EN<br>
+                    AMBIENTES VIRTUALES DE<br>
+                    APRENDIZAJE<br>
+                    <h1 class="text-5xl md:text-6xl font-bold text-heading mb-6 leading-tight">VIRTUS</h1>
+                </h1>
+                <p class="text-xl text-white-custom inline-block px-6 py-3 rounded-lg shadow-lg" style="background-color: var(--color-primary);">
+                    UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS
+                </p>
+            </div>
+            
+            <!-- Ilustración de personajes -->
+            <div class="absolute right-20 bottom-20 hidden lg:block">
+                <img src="/img/estudiante.png" alt="Ilustración estudiantes" class="w-80">
+            </div>
+        </div>
+    </section>
+
+    <!-- ¿Quiénes Somos? -->
+    <section id="quienes-somos" class="py-20 bg-cream">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-heading mb-12">¿QUIÉNES SOMOS?</h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Texto -->
+                <div class="lg:w-2/3">
+                    <p class="text-primary text-lg leading-relaxed mb-6">
+                        EL GRUPO DE INVESTIGACIÓN INTERINSTITUCIONAL COLOMBIANO ESTUDIA LOS AMBIENTES VIRTUALES SIMPLES. 
+                        ES UNA ORGANIZACIÓN AVALADA POR LA ESCUELA TECNOLÓGICA INSTITUTO TÉCNICO CENTRAL Y LA 
+                        UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS, DOS INSTITUCIONES DE EDUCACIÓN 
+                        SUPERIOR PÚBLICAS, UBICADAS EN BOGOTÁ, COLOMBIA.
+                    </p>
+                    <p class="text-primary text-lg leading-relaxed">
+                        EL GRUPO HACE INVESTIGACIÓN EN SES LÍNEAS: AMBIENTES VIRTUALES DE 
+                        APRENDIZAJE, TECNOLOGÍA EDUCATIVA, SISTEMAS ADAPTATIVOS Y SISTEMAS RECOMENDADORES, 
+                        GAMIFICACIÓN Y VIDEOJUEGOS, INGENIERÍA WEB, GESTIÓN DEL CONOCIMIENTO Y SU APLICACIÓN 
+                        ORGANIZACIONAL.
+                    </p>
+                </div>
+                
+                <!-- Logos -->
+                <div class="lg:w-1/3 flex flex-col items-center space-y-8">
+                    <img src="/img/EscudoUD.png" alt="Universidad Distrital Francisco José de Caldas" class="w-48">
+                    <img src="/img/EscudoEscuelaTecnica.png" alt="Instituto Técnico Central" class="w-48">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desarrollos -->
+    <section id="desarrollos" class="py-20 bg-green-section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-heading mb-4">Desarrollos</h2>
+            <p class="text-center text-secondary mb-12 text-lg">Explorando Innovaciones: Descubre Nuestros Avances en Desarrollo de Software</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- ODIN -->
+                <div class="bg-cream rounded-lg shadow-lg p-8 text-center border-2 border-green-custom">
+                    <img src="/img/ODIN.png" alt="ODIN Logo" class="w-32 mx-auto mb-6">
+                    <h3 class="text-2xl font-bold text-primary mb-4">ODIN</h3>
+                    <p class="text-secondary mb-6 leading-relaxed">
+                        Este permite la resolución de problemas para la comunidad educativa basándose en el procesamiento de lenguaje natural basado en problemas que parte de los técnicos, herramientas y recursos.
+                    </p>
+                    <button class="btn-primary text-white-custom font-semibold px-6 py-2 rounded-full transition">
+                        Conoce más
+                    </button>
+                </div>
+                
+                <!-- Herramientas Digitales -->
+                <div class="bg-cream rounded-lg shadow-lg p-8 text-center border-2 border-green-custom">
+                    <img src="/img/HerramientasDigitales.png" alt="Herramientas Digitales" class="w-32 mx-auto mb-6">
+                    <h3 class="text-2xl font-bold text-primary mb-4">Herramientas Digitales</h3>
+                    <p class="text-secondary mb-6 leading-relaxed">
+                        Esta plataforma permite a los docentes su aplicación en sus grupos académicos específicos para desarrollar prácticas en el proceso enseñanza-aprendizaje.
+                    </p>
+                    <button class="btn-primary text-white-custom font-semibold px-6 py-2 rounded-full transition">
+                        Conoce más
+                    </button>
+                </div>
+                
+                <!-- Competencias TIC -->
+                <div class="bg-cream rounded-lg shadow-lg p-8 text-center border-2 border-green-custom">
+                    <img src="/img/CompetenciasTIC.png" alt="Competencias TIC" class="w-32 mx-auto mb-6">
+                    <h3 class="text-2xl font-bold text-primary mb-4">Competencias TIC</h3>
+                    <p class="text-secondary mb-6 leading-relaxed">
+                        Esta aplicación permite evaluar el modelo y recibir un informe de grado de dominio a partir del perfil definido en el manejo de las Tecnologías de la Información y la Comunicación.
+                    </p>
+                    <button class="btn-primary text-white-custom font-semibold px-6 py-2 rounded-full transition">
+                        Conoce más
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Líneas de Investigación -->
+    <section id="lineas" class="py-20 bg-cream">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-heading mb-12">Nuestras líneas de investigación</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Línea 1 -->
+                <div class="bg-card rounded-lg shadow p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-bg-primary rounded-full p-2 mr-3">
+                            <img src="icon-linea1.png" alt="Icono" class="w-6 h-6">
+                        </div>
+                        <h3 class="font-bold text-primary">Ambientes y Herramientas Virtuales de Aprendizaje</h3>
+                    </div>
+                    <p class="text-secondary text-sm mb-4">
+                        Estudia las TIC como dispositivos digitales que facilitan procesos de enseñanza, aprendizaje efectivos y accesibles.
+                    </p>
+                    <ul class="text-primary text-sm space-y-1 mb-4">
+                        <li>• Realidad Virtual-Aumentada</li>
+                        <li>• Tabletas educativas</li>
+                    </ul>
+                    <a href="#" class="link-primary text-sm font-semibold">Ver Proyectos</a>
+                </div>
+                
+                <!-- Línea 2 -->
+                <div class="bg-card rounded-lg shadow p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-bg-primary rounded-full p-2 mr-3">
+                            <img src="icon-linea2.png" alt="Icono" class="w-6 h-6">
+                        </div>
+                        <h3 class="font-bold text-primary">Tecnología Educativa</h3>
+                    </div>
+                    <p class="text-secondary text-sm mb-4">
+                        Integra herramientas digitales e interactivas en espacios formativos para enriquecer las habilidades informáticas.
+                    </p>
+                    <ul class="text-primary text-sm space-y-1 mb-4">
+                        <li>• Herramientas árabes</li>
+                        <li>• Telemática digital</li>
+                        <li>• Retroalimentación automática</li>
+                    </ul>
+                    <a href="#" class="link-primary text-sm font-semibold">Ver Proyectos</a>
+                </div>
+                
+                <!-- Línea 3 -->
+                <div class="bg-card rounded-lg shadow p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-bg-primary rounded-full p-2 mr-3">
+                            <img src="icon-linea3.png" alt="Icono" class="w-6 h-6">
+                        </div>
+                        <h3 class="font-bold text-primary">Sistemas Adaptativos y Sistemas Recomendadores</h3>
+                    </div>
+                    <p class="text-secondary text-sm mb-4">
+                        Estas tecnologías permiten adaptar el usuario y proporcionar experiencias personalizadas.
+                    </p>
+                    <ul class="text-primary text-sm space-y-1 mb-4">
+                        <li>• Personalización adaptativa</li>
+                        <li>• Sistemas de recomendación</li>
+                    </ul>
+                    <a href="#" class="link-primary text-sm font-semibold">Ver Proyectos</a>
+                </div>
+                
+                <!-- Línea 4 -->
+                <div class="bg-card rounded-lg shadow p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-bg-primary rounded-full p-2 mr-3">
+                            <img src="icon-linea4.png" alt="Icono" class="w-6 h-6">
+                        </div>
+                        <h3 class="font-bold text-primary">Gamificación y Videojuegos</h3>
+                    </div>
+                    <p class="text-secondary text-sm mb-4">
+                        Incorpora elementos y dinámicas de juego para potenciar el compromiso y la motivación.
+                    </p>
+                    <ul class="text-primary text-sm space-y-1 mb-4">
+                        <li>• Gamificación educativa</li>
+                        <li>• Juegos Serios</li>
+                        <li>• Videojuegos educativos</li>
+                    </ul>
+                    <a href="#" class="link-primary text-sm font-semibold">Ver Proyectos</a>
+                </div>
+                
+                <!-- Línea 5 -->
+                <div class="bg-card rounded-lg shadow p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-bg-primary rounded-full p-2 mr-3">
+                            <img src="icon-linea5.png" alt="Icono" class="w-6 h-6">
+                        </div>
+                        <h3 class="font-bold text-primary">Ingeniería Web</h3>
+                    </div>
+                    <p class="text-secondary text-sm mb-4">
+                        Desarrollo de herramientas web robustas, escalables y centradas en el usuario.
+                    </p>
+                    <ul class="text-primary text-sm space-y-1 mb-4">
+                        <li>• DesarrolloFullStack</li>
+                        <li>• Tecnologías emergentes</li>
+                        <li>• Accesibilidad y Usabilidad</li>
+                    </ul>
+                    <a href="#" class="link-primary text-sm font-semibold">Ver Proyectos</a>
+                </div>
+                
+                <!-- Línea 6 -->
+                <div class="bg-card rounded-lg shadow p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-bg-primary rounded-full p-2 mr-3">
+                            <img src="icon-linea6.png" alt="Icono" class="w-6 h-6">
+                        </div>
+                        <h3 class="font-bold text-primary">Gestión del Conocimiento y su Aplicación Organizacional</h3>
+                    </div>
+                    <p class="text-secondary text-sm mb-4">
+                        Evaluación y herramientas para la mejora y gestión del capital humano en las organizaciones.
+                    </p>
+                    <ul class="text-primary text-sm space-y-1 mb-4">
+                        <li>• Evaluación Organizacional</li>
+                        <li>• Competencias profesionales</li>
+                    </ul>
+                    <a href="#" class="link-primary text-sm font-semibold">Ver Proyectos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Novedades -->
+    <section id="novedades" class="py-20 bg-green-section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-heading mb-12">Novedades</h2>
+            
+            <div class="text-center py-4 rounded-lg mb-8" style="background-color: var(--color-gray-400);">
+                <p class="text-white-custom font-semibold text-lg">Conoce nuestras publicaciones y más</p>
+            </div>
+            
+            <!-- Publicación 1 -->
+            <div class="bg-cream rounded-lg shadow-lg mb-6 overflow-hidden border-2 border-green-custom">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-2/3 p-8">
+                        <span class="tag-primary text-sm font-semibold">Energía</span>
+                        <h3 class="text-2xl font-bold text-primary mt-2 mb-4">
+                            Avances en la tecnología de celdas solares
+                        </h3>
+                        <p class="text-secondary">
+                            La eficiencia de las celdas solares ha experimentado un salto significativo gracias a la investigación en nuevos materiales. La eficiencia de las celdas solares.
+                        </p>
+                    </div>
+                    <div class="md:w-1/3">
+                        <img src="imagen-celdas-solares.jpg" alt="Celdas Solares" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Publicación 2 -->
+            <div class="bg-cream rounded-lg shadow-lg mb-8 overflow-hidden border-2 border-green-custom">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-2/3 p-8">
+                        <span class="tag-primary text-sm font-semibold">Sostenibilidad</span>
+                        <h3 class="text-2xl font-bold text-primary mt-2 mb-4">
+                            Impacto de la IA en la sostenibilidad
+                        </h3>
+                        <p class="text-secondary">
+                            Las diferencias son notables sobre cómo la inteligencia artificial puede contribuir al futuro y es crucial, más sostenible.
+                        </p>
+                    </div>
+                    <div class="md:w-1/3">
+                        <img src="imagen-ia-sostenibilidad.jpg" alt="IA Sostenibilidad" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button class="btn-gray text-white-custom font-semibold px-8 py-3 rounded-lg transition">
+                    Ver más Publicaciones
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-footer text-white-custom py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- Grupo Virtus -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Grupo Virtus</h4>
+                    <p class="text-light text-sm leading-relaxed">
+                        Grupo de investigación interinstitucional con la innovación en tecnología educativa y el desarrollo de soluciones tecnológicas para mejoras de organizaciones.
+                    </p>
+                    <div class="mt-4">
+                        <p class="text-sm text-light">📧 Email</p>
+                        <p class="text-sm text-light">📞 +57 601 3239300</p>
+                        <p class="text-sm text-light">📍 Carrera 7 # 40B - 53</p>
+                    </div>
+                </div>
+                
+                <!-- Líneas de Investigación -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Líneas de Investigación</h4>
+                    <ul class="space-y-2 text-sm text-light">
+                        <li>Ambientes Virtuales de Aprendizaje</li>
+                        <li>Tecnología Educativa</li>
+                        <li>Sistemas Adaptativos</li>
+                        <li>Gamificación y Videojuegos</li>
+                    </ul>
+                </div>
+                
+                <!-- El Grupo -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">El Grupo</h4>
+                    <ul class="space-y-2 text-sm text-light">
+                        <li>Acerca del Grupo</li>
+                        <li>Filosofía</li>
+                        <li>Proyectos Actuales</li>
+                        <li>Publicaciones</li>
+                    </ul>
+                </div>
+                
+                <!-- Recursos -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Recursos</h4>
+                    <ul class="space-y-2 text-sm text-light">
+                        <li>Publicaciones</li>
+                        <li>Recursos de Innovación</li>
+                        <li>Eventos y Seminarios</li>
+                        <li>Contáctanos</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Redes Sociales -->
+            <div class="pt-8 flex flex-col md:flex-row justify-between items-center border-footer" style="border-top: 1px solid var(--color-border-footer);">
+                <p class="text-sm text-light mb-4 md:mb-0">
+                    © 2025 Grupo Virtus - Universidad Distrital Francisco José de Caldas. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-white-custom transition" style="hover: var(--color-primary-light);">
+                        <img src="/img/instagram.png" alt="Instagram" class="w-6 h-6">
+                    </a>
+                    <a href="#" class="text-white-custom transition" style="hover: var(--color-primary-light);">
+                        <img src="/img/linkedin.png" alt="LinkedIn" class="w-6 h-6">
+                    </a>
+                    <a href="#" class="text-white-custom transition" style="hover: var(--color-primary-light);">
+                        <img src="/img/facebook.png" alt="Facebook" class="w-6 h-6">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
