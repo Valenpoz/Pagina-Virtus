@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia - Grupo VIRTUS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#16a34a',
+                            hover: '#15803d',
+                            light: '#86efac',
+                        },
+                        cream: '#e9e4d2',
+                        'green-section': '#dcfce7',
+                        'card-bg': '#f0fdf4',
+                        'text-main': '#1f2937',
+                        'text-secondary': '#4b5563',
+                        'heading': '#15803d',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(180deg, #e9e4d2 0%, #dcfce7 50%, #e9e4d2 100%);
+            background-attachment: fixed;
+        }
+        
+        .timeline-container {
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 60px;
+            bottom: 60px;
+            width: 4px;
+            background: linear-gradient(to bottom, #16a34a, #86efac, #16a34a);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 0;
+        }
+        
+        .timeline-year {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+            z-index: 10;
+        }
+        
+        .timeline-year-badge {
+            background: #16a34a;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 8px 16px rgba(22, 163, 74, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .timeline-year-badge::before,
+        .timeline-year-badge::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 60px;
+            height: 2px;
+            background: #16a34a;
+        }
+        
+        .timeline-year-badge::before {
+            right: 100%;
+            margin-right: 10px;
+        }
+        
+        .timeline-year-badge::after {
+            left: 100%;
+            margin-left: 10px;
+        }
+        
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #16a34a;
+            border: 5px solid #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.2);
+        }
+        
+        .timeline-content {
+            position: relative;
+            z-index: 5;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 30px;
+            }
+            .timeline-dot {
+                left: 30px;
+            }
+            .timeline-year-badge::before,
+            .timeline-year-badge::after {
+                display: none;
+            }
+            .timeline-year {
+                justify-content: flex-start;
+                margin-left: 70px;
+            }
+        }
+    </style>
+</head>
+<body class="font-poppins">
+    
+    <!-- Historia Section -->
+    <section id="historia" class="py-20 bg-cream">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-heading mb-8">Nuestra Historia</h2>
+            <p class="text-center text-text-secondary max-w-4xl mx-auto mb-20 text-lg leading-relaxed">
+                Un recorrido por los momentos más significativos en la evolución del Grupo VIRTUS, 
+                desde sus inicios hasta convertirse en un referente en investigación de ambientes virtuales de aprendizaje.
+            </p>
+            
+            <!-- Timeline -->
+            <div class="timeline-container relative max-w-5xl mx-auto py-8">
+                <!-- Línea central -->
+                <div class="timeline-line hidden md:block"></div>
+                
+                <!-- 2007 -->
+                <div class="timeline-year">
+                    <div class="timeline-year-badge">2007</div>
+                </div>
+                
+                <!-- Enero 2007 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="md:text-right md:pr-16">
+                            <div class="bg-green-section rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl">
+                                <span class="inline-block bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Enero</span>
+                                <h3 class="text-xl font-bold text-heading mb-3">🚀 El Origen</h3>
+                                <p class="text-text-secondary text-sm leading-relaxed">
+                                    El Ing. Fernando Martínez Rodríguez vislumbra la necesidad de generar un proyecto de investigación en 
+                                    "Herramientas virtuales de aprendizaje", después de que la ETITC capacitara docentes mediante un Diplomado 
+                                    como Tutores Virtuales en la UNAB.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+                </div>
+                
+                <!-- Agosto 2007 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="hidden md:block"></div>
+                        <div class="md:pl-16">
+                            <div class="bg-green-section rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl">
+                                <span class="inline-block bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Agosto</span>
+                                <h3 class="text-xl font-bold text-heading mb-3">🌟 Nacimiento de VIRTUS</h3>
+                                <p class="text-text-secondary text-sm leading-relaxed">
+                                    Se conforma oficialmente el grupo de investigación con 8 participantes del primer Diplomado. 
+                                    El nombre "VIRTUS" es propuesto por el Ing. Hernán Darío Cortés y aprobado por el grupo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2008 -->
+                <div class="timeline-year">
+                    <div class="timeline-year-badge">2008</div>
+                </div>
+                
+                <!-- Junio 2008 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="md:text-right md:pr-16">
+                            <div class="bg-green-section rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl">
+                                <span class="inline-block bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Junio</span>
+                                <h3 class="text-xl font-bold text-heading mb-3">🤝 Vinculación Universidad Distrital</h3>
+                                <p class="text-text-secondary text-sm leading-relaxed">
+                                    El director y fundador gana un concurso en la Universidad Distrital, fortaleciendo los lazos 
+                                    interinstitucionales mientras continúa liderando el grupo.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+                </div>
+                
+                <!-- 2010 -->
+                <div class="timeline-year">
+                    <div class="timeline-year-badge">2010</div>
+                </div>
+                
+                <!-- Agosto 2010 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="hidden md:block"></div>
+                        <div class="md:pl-16">
+                            <div class="bg-green-section rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl">
+                                <span class="inline-block bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Agosto</span>
+                                <h3 class="text-xl font-bold text-heading mb-3">🏆 Reconocimiento Colciencias</h3>
+                                <p class="text-text-secondary text-sm leading-relaxed">
+                                    VIRTUS obtiene el reconocimiento por parte de Colciencias como Grupo de Investigación 
+                                    y es categorizado en categoría D. Un hito fundamental en la consolidación del grupo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2013 -->
+                <div class="timeline-year">
+                    <div class="timeline-year-badge">2013</div>
+                </div>
+                
+                <!-- Octubre 2013 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="md:text-right md:pr-16">
+                            <div class="bg-green-section rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl">
+                                <span class="inline-block bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Octubre</span>
+                                <h3 class="text-xl font-bold text-heading mb-3">🔗 Grupo Interinstitucional</h3>
+                                <p class="text-text-secondary text-sm leading-relaxed">
+                                    VIRTUS se convierte oficialmente en un Grupo de Investigación Interinstitucional, 
+                                    perteneciendo a la ETITC y a la Universidad Distrital Francisco José de Caldas.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+                </div>
+                
+                <!-- 2016 -->
+                <div class="timeline-year">
+                    <div class="timeline-year-badge">2016</div>
+                </div>
+                
+                <!-- Mayo 2016 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="hidden md:block"></div>
+                        <div class="md:pl-16">
+                            <div class="bg-green-section rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl">
+                                <span class="inline-block bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Mayo</span>
+                                <h3 class="text-xl font-bold text-heading mb-3">📈 Ascenso a Categoría C</h3>
+                                <p class="text-text-secondary text-sm leading-relaxed">
+                                    Resultados de la convocatoria 737 de 2015: VIRTUS asciende a categoría C de Colciencias, 
+                                    reconociendo la calidad y producción científica del grupo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2017 -->
+                <div class="timeline-year">
+                    <div class="timeline-year-badge">2017</div>
+                </div>
+                
+                <!-- Diciembre 2017 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="md:text-right md:pr-16">
+                            <div class="bg-green-section rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl">
+                                <span class="inline-block bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Diciembre</span>
+                                <h3 class="text-xl font-bold text-heading mb-3">✅ Confirmación Categoría C</h3>
+                                <p class="text-text-secondary text-sm leading-relaxed">
+                                    En la convocatoria 781 de 2017, VIRTUS confirma su categoría C, consolidándose como un grupo 
+                                    de investigación de alta calidad con impacto nacional.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+                </div>
+                
+                <!-- Presente -->
+                <div class="timeline-year">
+                    <div class="timeline-year-badge">Hoy</div>
+                </div>
+                
+                <!-- Actualidad -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="hidden md:block"></div>
+                        <div class="md:pl-16">
+                            <div class="bg-green-section rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl">
+                                <span class="inline-block bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Actualidad</span>
+                                <h3 class="text-xl font-bold text-heading mb-3">🔬 Investigación Activa</h3>
+                                <p class="text-text-secondary text-sm leading-relaxed">
+                                    El grupo continúa trabajando en sus seis líneas de investigación: Ambientes y Herramientas Virtuales de Aprendizaje, 
+                                    Tecnología Educativa, Sistemas Adaptativos y Recomendadores, Gamificación y Videojuegos, 
+                                    Ingeniería Web, y Gestión del Conocimiento Organizacional.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Estadísticas -->
+            <div class="mt-24 grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div class="bg-primary rounded-xl p-6 text-center shadow-lg transform transition hover:scale-105">
+                    <div class="text-5xl font-bold text-white mb-2">18+</div>
+                    <div class="text-white text-sm font-semibold">Años de Historia</div>
+                </div>
+                <div class="bg-primary rounded-xl p-6 text-center shadow-lg transform transition hover:scale-105">
+                    <div class="text-5xl font-bold text-white mb-2">6</div>
+                    <div class="text-white text-sm font-semibold">Líneas de Investigación</div>
+                </div>
+                <div class="bg-primary rounded-xl p-6 text-center shadow-lg transform transition hover:scale-105">
+                    <div class="text-5xl font-bold text-white mb-2">80+</div>
+                    <div class="text-white text-sm font-semibold">Docentes Capacitados</div>
+                </div>
+                <div class="bg-primary rounded-xl p-6 text-center shadow-lg transform transition hover:scale-105">
+                    <div class="text-5xl font-bold text-white mb-2">2</div>
+                    <div class="text-white text-sm font-semibold">Instituciones Aliadas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
