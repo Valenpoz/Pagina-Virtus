@@ -5,7 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupo VIRTUS - Investigación en Ambientes Virtuales de Aprendizaje</title>
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Animate.css (entradas adicionales) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <script>
         tailwind.config = {
             theme: {
@@ -56,24 +65,59 @@
             }
         }
     </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         
         body {
-             background:  #e7e7dd;
-            /*background: linear-gradient(180deg, #e7e3d7 0%, #e8fff0 50%, #efebde 100%);*/
+            background:  #e7e7dd;
             background-attachment: fixed;
         }
         
         .hero-overlay {
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+            background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35));
+        }
+
+        /* PARALLAX (suave) */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        /* FLOAT animation para ilustraciones */
+        .float {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* REVEAL simple para fallback (si JS tarda) */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+        .fade-up.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Suavizar imágenes de portada */
+        .cover-img {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            will-change: transform;
         }
     </style>
 </head>
 <body class="font-poppins">
-    
-    <!-- Navegación -->
-    <nav class="bg-nav-bg shadow-md fixed w-full top-0 z-50">
+
+    <!-- NAV (se agregó efecto al hacer scroll via JS) -->
+    <nav id="mainNav" class="bg-nav-bg shadow-md fixed w-full top-0 z-50 transition-all">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
@@ -97,41 +141,40 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- HERO Section (PARALLAX) -->
     <section id="inicio" class="relative h-screen mt-20">
-        <div class="absolute inset-0">
-            <img src="/img/backgroundUD.png" alt="Background Virtus" class="w-full h-full object-cover">
+        <div class="absolute inset-0 parallax-bg" style="background-image: url('/img/backgroundUD.png');">
             <div class="hero-overlay absolute inset-0"></div>
         </div>
         
         <div class="relative container mx-auto px-6 h-full flex items-center">
-            <div class="max-w-3xl">
-                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <div class="max-w-3xl" data-aos="fade-right">
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight animate__animated animate__fadeInDown">
                     GRUPO DE INVESTIGACIÓN EN<br>
                     AMBIENTES VIRTUALES DE<br>
                     APRENDIZAJE<br>
                     <span class="text-heading">VIRTUS</span>
                 </h1>
-                <p class="text-xl text-white bg-primary inline-block px-6 py-3 rounded-lg shadow-lg">
+                <p class="text-xl text-white bg-primary inline-block px-6 py-3 rounded-lg shadow-lg animate__animated animate__fadeInUp animate__delay-1s">
                     UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS
                 </p>
             </div>
             
-            <!-- Ilustración de personajes -->
-            <div class="absolute right-20 bottom-20 hidden lg:block">
-                <img src="/img/estudiante.png" alt="Ilustración estudiantes" class="w-80">
+            <!-- Ilustración de personajes (float + AOS) -->
+            <div class="absolute right-20 bottom-20 hidden lg:block" data-aos="fade-left">
+                <img src="/img/estudiante.png" alt="Ilustración estudiantes" class="w-80 float cover-img">
             </div>
         </div>
     </section>
 
-    <!-- ¿Quiénes Somos? -->
-    <section id="quienes-somos" class="py-20 ">
+    <!-- ¿Quiénes Somos? (AOS reveal) -->
+    <section id="quienes-somos" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-heading mb-12">¿QUIÉNES SOMOS?</h2>
+            <h2 class="text-4xl font-bold text-center text-heading mb-12" data-aos="zoom-in">¿QUIÉNES SOMOS?</h2>
             
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <!-- Texto -->
-                <div class="lg:w-2/3">
+                <div class="lg:w-2/3" data-aos="fade-right">
                     <p class="text-text-main text-lg leading-relaxed mb-6">
                         EL GRUPO DE INVESTIGACIÓN INTERINSTITUCIONAL COLOMBIANO ESTUDIA LOS AMBIENTES VIRTUALES SIMPLES. 
                         ES UNA ORGANIZACIÓN AVALADA POR LA ESCUELA TECNOLÓGICA INSTITUTO TÉCNICO CENTRAL Y LA 
@@ -146,54 +189,54 @@
                     </p>
                 </div>
                 
-                <!-- Logos -->
-                <div class="lg:w-1/3 flex flex-col items-center space-y-8">
-                    <img src="/img/EscudoUD.png" alt="Universidad Distrital Francisco José de Caldas" class="w-48">
-                    <img src="/img/EscudoEscuelaTecnica.png" alt="Instituto Técnico Central" class="w-48">
+                <!-- Logos (AOS) -->
+                <div class="lg:w-1/3 flex flex-col items-center space-y-8" data-aos="fade-left">
+                    <img src="/img/EscudoUD.png" alt="Universidad Distrital Francisco José de Caldas" class="w-48 rounded-lg shadow-md">
+                    <img src="/img/EscudoEscuelaTecnica.png" alt="Instituto Técnico Central" class="w-48 rounded-lg shadow-md">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Desarrollos -->
-    <section id="desarrollos" class="py-20 ">
+    <!-- Desarrollos (cards with hover + AOS) -->
+    <section id="desarrollos" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-heading mb-4">Desarrollos</h2>
-            <p class="text-center text-text-secondary mb-12 text-lg">Explorando Innovaciones: Descubre Nuestros Avances en Desarrollo de Software</p>
+            <h2 class="text-4xl font-bold text-center text-heading mb-4" data-aos="fade-up">Desarrollos</h2>
+            <p class="text-center text-text-secondary mb-12 text-lg" data-aos="fade-up" data-aos-delay="100">Explorando Innovaciones: Descubre Nuestros Avances en Desarrollo de Software</p>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- ODIN -->
-                <div class="bg-cream rounded-lg shadow-lg p-8 text-center border-2 border-border-green">
+                <div class="bg-cream rounded-lg shadow-lg p-8 text-center border-2 border-border-green transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in" data-aos-delay="100">
                     <img src="/img/ODIN.png" alt="ODIN Logo" class="w-32 mx-auto mb-6">
                     <h3 class="text-2xl font-bold text-text-main mb-4">ODIN</h3>
                     <p class="text-text-secondary mb-6 leading-relaxed">
                         Este permite la resolución de problemas para la comunidad educativa basándose en el procesamiento de lenguaje natural basado en problemas que parte de los técnicos, herramientas y recursos.
                     </p>
-                    <button class="bg-primary hover:bg-primary-hover text-white font-semibold px-6 py-2 rounded-full transition">
+                    <button class="bg-primary hover:bg-primary-hover text-white font-semibold px-6 py-2 rounded-full transition transform hover:-translate-y-1">
                         Conoce más
                     </button>
                 </div>
                 
                 <!-- Herramientas Digitales -->
-                <div class="bg-cream rounded-lg shadow-lg p-8 text-center border-2 border-border-green">
+                <div class="bg-cream rounded-lg shadow-lg p-8 text-center border-2 border-border-green transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in" data-aos-delay="200">
                     <img src="/img/HerramientasDigitales.png" alt="Herramientas Digitales" class="w-32 mx-auto mb-6">
                     <h3 class="text-2xl font-bold text-text-main mb-4">Herramientas Digitales</h3>
                     <p class="text-text-secondary mb-6 leading-relaxed">
                         Esta plataforma permite a los docentes su aplicación en sus grupos académicos específicos para desarrollar prácticas en el proceso enseñanza-aprendizaje.
                     </p>
-                    <button class="bg-primary hover:bg-primary-hover text-white font-semibold px-6 py-2 rounded-full transition">
+                    <button class="bg-primary hover:bg-primary-hover text-white font-semibold px-6 py-2 rounded-full transition transform hover:-translate-y-1">
                         Conoce más
                     </button>
                 </div>
                 
                 <!-- Competencias TIC -->
-                <div class="bg-cream rounded-lg shadow-lg p-8 text-center border-2 border-border-green">
+                <div class="bg-cream rounded-lg shadow-lg p-8 text-center border-2 border-border-green transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in" data-aos-delay="300">
                     <img src="/img/CompetenciasTIC.png" alt="Competencias TIC" class="w-32 mx-auto mb-6">
                     <h3 class="text-2xl font-bold text-text-main mb-4">Competencias TIC</h3>
                     <p class="text-text-secondary mb-6 leading-relaxed">
                         Esta aplicación permite evaluar el modelo y recibir un informe de grado de dominio a partir del perfil definido en el manejo de las Tecnologías de la Información y la Comunicación.
                     </p>
-                    <button class="bg-primary hover:bg-primary-hover text-white font-semibold px-6 py-2 rounded-full transition">
+                    <button class="bg-primary hover:bg-primary-hover text-white font-semibold px-6 py-2 rounded-full transition transform hover:-translate-y-1">
                         Conoce más
                     </button>
                 </div>
@@ -201,14 +244,14 @@
         </div>
     </section>
 
-    <!-- Líneas de Investigación -->
-    <section id="lineas" class="py-20 ">
+    <!-- Líneas de Investigación (stagger + AOS) -->
+    <section id="lineas" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-heading mb-12">Nuestras líneas de investigación</h2>
+            <h2 class="text-4xl font-bold text-center text-heading mb-12" data-aos="fade-up">Nuestras líneas de investigación</h2>
             
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- Línea 1 -->
-                <div class="bg-card-bg rounded-lg shadow p-6">
+                <div class="bg-card-bg rounded-lg shadow p-6 fade-up" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center mb-4">
                         <div class="bg-primary rounded-full p-2 mr-3">
                             <img src="/img/herramientas.png" alt="Icono" class="w-6 h-6">
@@ -226,7 +269,7 @@
                 </div>
                 
                 <!-- Línea 2 -->
-                <div class="bg-card-bg rounded-lg shadow p-6">
+                <div class="bg-card-bg rounded-lg shadow p-6 fade-up" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center mb-4">
                         <div class="bg-primary rounded-full p-2 mr-3">
                             <img src="/img/E-learning.png" alt="Icono" class="w-6 h-6">
@@ -245,7 +288,7 @@
                 </div>
                 
                 <!-- Línea 3 -->
-                <div class="bg-card-bg rounded-lg shadow p-6">
+                <div class="bg-card-bg rounded-lg shadow p-6 fade-up" data-aos="fade-up" data-aos-delay="300">
                     <div class="flex items-center mb-4">
                         <div class="bg-primary rounded-full p-2 mr-3">
                             <img src="/img/inclusion.png" alt="Icono" class="w-6 h-6">
@@ -263,7 +306,7 @@
                 </div>
                 
                 <!-- Línea 4 -->
-                <div class="bg-card-bg rounded-lg shadow p-6">
+                <div class="bg-card-bg rounded-lg shadow p-6 fade-up" data-aos="fade-up" data-aos-delay="400">
                     <div class="flex items-center mb-4">
                         <div class="bg-primary rounded-full p-2 mr-3">
                             <img src="/img/logoVideojuegos.png" alt="Icono" class="w-6 h-6">
@@ -282,7 +325,7 @@
                 </div>
                 
                 <!-- Línea 5 -->
-                <div class="bg-card-bg rounded-lg shadow p-6">
+                <div class="bg-card-bg rounded-lg shadow p-6 fade-up" data-aos="fade-up" data-aos-delay="500">
                     <div class="flex items-center mb-4">
                         <div class="bg-primary rounded-full p-2 mr-3">
                             <img src="/img/web.png" alt="Icono" class="w-6 h-6">
@@ -301,7 +344,7 @@
                 </div>
                 
                 <!-- Línea 6 -->
-                <div class="bg-card-bg rounded-lg shadow p-6">
+                <div class="bg-card-bg rounded-lg shadow p-6 fade-up" data-aos="fade-up" data-aos-delay="600">
                     <div class="flex items-center mb-4">
                         <div class="bg-primary rounded-full p-2 mr-3">
                             <img src="/img/organizacion.png" alt="Icono" class="w-6 h-6">
@@ -322,16 +365,16 @@
     </section>
 
     <!-- Novedades -->
-    <section id="novedades" class="py-20 ">
+    <section id="novedades" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-heading mb-12">Novedades</h2>
+            <h2 class="text-4xl font-bold text-center text-heading mb-12" data-aos="fade-up">Novedades</h2>
             
             <div class="bg-banner-bg text-center py-4 rounded-lg mb-8">
                 <p class="text-white font-semibold text-lg">Conoce nuestras publicaciones y más</p>
             </div>
             
             <!-- Publicación 1 -->
-            <div class="bg-cream rounded-lg shadow-lg mb-6 overflow-hidden border-2 border-border-green">
+            <div class="bg-cream rounded-lg shadow-lg mb-6 overflow-hidden border-2 border-border-green" data-aos="fade-right">
                 <div class="flex flex-col md:flex-row">
                     <div class="md:w-2/3 p-8">
                         <span class="text-primary text-sm font-semibold"> </span>
@@ -349,7 +392,7 @@
             </div>
             
             <!-- Publicación 2 -->
-            <div class="bg-cream rounded-lg shadow-lg mb-8 overflow-hidden border-2 border-border-green">
+            <div class="bg-cream rounded-lg shadow-lg mb-8 overflow-hidden border-2 border-border-green" data-aos="fade-left">
                 <div class="flex flex-col md:flex-row">
                     <div class="md:w-2/3 p-8">
                         <span class="text-primary text-sm font-semibold"> </span>
@@ -366,249 +409,206 @@
                 </div>
             </div>
             
-            <div class="text-center">
-                <a class="bg-gray-700 hover:bg-gray-800 text-white font-semibold px-8 py-3 rounded-lg transition">
+            <div class="text-center" data-aos="zoom-in">
+                <a class="bg-gray-700 hover:bg-gray-800 text-white font-semibold px-8 py-3 rounded-lg transition inline-block">
                     Ver más Publicaciones
                 </a>
             </div>
         </div>
     </section>
     
-    <!--  NUESTRA SECCIÓN DE INVESTIGADORES  -->
-    
-<section id="investigadores" class="py-20 bg-cream">
-    <div class="container mx-auto px-6 text-center">
-        <h2 class="text-4xl font-bold text-heading mb-6">Nuestros Investigadores</h2>
-        <p class="text-text-secondary text-lg mb-12">Conoce al equipo que impulsa la innovación del grupo Virtus</p>
+    <!-- INVESTIGADORES (animados) -->
+    <section id="investigadores" class="py-20 bg-cream">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-heading mb-6" data-aos="zoom-in">Nuestros Investigadores</h2>
+            <p class="text-text-secondary text-lg mb-12" data-aos="fade-up">Conoce al equipo que impulsa la innovación del grupo Virtus</p>
 
-        <!-- Fundador y Subdirector -->
-        <div class="grid md:grid-cols-2 gap-12 mb-16">
-            <!-- Fundador -->
-            <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green hover:scale-105 transition-transform">
-                <span class="bg-primary text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">Fundador y Director</span>
-                <img src="/img/FernandoMartinez.jpg" alt="Dr. Fernando Martinez" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
-                <h3 class="text-xl font-bold text-text-main">Dr. Fernando Martinez</h3>
-                <p class="text-text-secondary text-sm mb-6">Especialista en Inteligencia Artificial y Robótica</p>
-                <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
-            </div> 
+            <!-- Fundador y Subdirector -->
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <!-- Fundador -->
+                <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="flip-left">
+                    <span class="bg-primary text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">Fundador y Director</span>
+                    <img src="/img/FernandoMartinez.jpg" alt="Dr. Fernando Martinez" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
+                    <h3 class="text-xl font-bold text-text-main">Dr. Fernando Martinez</h3>
+                    <p class="text-text-secondary text-sm mb-6">Especialista en Inteligencia Artificial y Robótica</p>
+                    <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
+                </div> 
 
-            <!-- Subdirector -->
-            <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green hover:scale-105 transition-transform">
-                <span class="bg-primary text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">Subdirector</span>
-                <img src="/img/JaimePaez.png" alt="Ing. Jaime Paéz" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
-                <h3 class="text-xl font-bold text-text-main">Ing. Jaime Paéz</h3>
-                <p class="text-text-secondary text-sm mb-6">Profesor de la Escuela Tecnológica Instituto Técnico Central</p>
-                <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
+                <!-- Subdirector -->
+                <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="flip-right">
+                    <span class="bg-primary text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">Subdirector</span>
+                    <img src="/img/JaimePaez.png" alt="Ing. Jaime Paéz" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
+                    <h3 class="text-xl font-bold text-text-main">Ing. Jaime Paéz</h3>
+                    <p class="text-text-secondary text-sm mb-6">Profesor de la Escuela Tecnológica Instituto Técnico Central</p>
+                    <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
+                </div>
+            </div>
+
+            <!-- Otros investigadores -->
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Investigador 1 -->
+                <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="/img/ArmandoSolano.jpeg" alt="Lic. Armando Solano" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
+                    <h3 class="text-xl font-bold text-text-main">Lic. Armando Solano</h3>
+                    <p class="text-text-secondary text-sm mb-6">Profesor de la Escuela Tecnológica Instituto Técnico Central.</p>
+                    <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
+                </div>
+
+                <!-- Investigador 2 -->
+                <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="/img/EduardoHernandez.jpeg" alt="Ing. Eduardo Hernandez" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
+                    <h3 class="text-xl font-bold text-text-main">Ing. Eduardo Hernandez</h3>
+                    <p class="text-text-secondary text-sm mb-6">Administrativo de planta Universidad Distrital</p>
+                    <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
+                </div>
+
+                <!-- Investigador 3 -->
+                <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="/img/LuisGonzales.png" alt="Lic. Luis Alberto Garcia Gonzalez" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
+                    <h3 class="text-xl font-bold text-text-main">Lic. Luis Alberto Garcia Gonzalez</h3>
+                    <p class="text-text-secondary text-sm mb-6">Docente de cátedra</p>
+                    <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
+                </div>
+
+                <!-- Investigador 4 -->
+                <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="/img/AndreaGarcia.jpg" alt="Ing. Andrea Garcia Rivas" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
+                    <h3 class="text-xl font-bold text-text-main">Ing. Andrea Garcia Rivas</h3>
+                    <p class="text-text-secondary text-sm mb-6">Docente de planta</p>
+                    <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
+                </div>
+
+                <!-- Investigador 5 -->
+                <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in" data-aos-delay="500">
+                    <img src="/img/KarenGarcia.jpg" alt="Dr. Karen Patricia Gaitán de los Ríosz" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
+                    <h3 class="text-xl font-bold text-text-main">Dr. Karen Patricia Gaitán de los Ríos</h3>
+                    <p class="text-text-secondary text-sm mb-6">Doctora con énfasis en Física de la Atmósfera y Física Computacional</p>
+                    <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
+                </div>
+
+                <!-- Investigador 6 -->
+                <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in" data-aos-delay="600">
+                    <img src="/img/JuanLeal.jpg" alt="Juan David Leal Campuzano" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
+                    <h3 class="text-xl font-bold text-text-main">Juan David Leal Campuzano</h3>
+                    <p class="text-text-secondary text-sm mb-6">Matemático egresado de la Universidad Distrital Francisco José de Caldas</p>
+                    <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
+                </div>
             </div>
         </div>
+    </section>
+    <!-- FIN DE LA SECCIÓN DE INVESTIGADORES -->
 
-        <!-- Otros investigadores -->
-        <div class="grid md:grid-cols-3 gap-12">
-            <!-- Investigador 1 -->
-            <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green hover:scale-105 transition-transform">
-                <img src="/img/ArmandoSolano.jpeg" alt="Lic. Armando Solano" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
-                <h3 class="text-xl font-bold text-text-main">Lic. Armando Solano</h3>
-                <p class="text-text-secondary text-sm mb-6">Profesor de la Escuela Tecnológica Instituto Técnico Central.</p>
-                <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
-            </div>
+    <!-- FILOSOFÍA (ya incluída arriba, pero mantenida para consistencia) -->
+    <section id="filosofia" class="bg-[#f3f0e4] py-16 px-4">
+      <h2 class="text-4xl font-bold text-center mb-10 text-[#6bb36b]" data-aos="zoom-in">Filosofía</h2>
 
-            <!-- Investigador 2 -->
-            <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green hover:scale-105 transition-transform">
-                <img src="/img/EduardoHernandez.jpeg" alt="Ing. Eduardo Hernandez" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
-                <h3 class="text-xl font-bold text-text-main">Ing. Eduardo Hernandez</h3>
-                <p class="text-text-secondary text-sm mb-6">Administrativo de planta Universidad Distrital</p>
-                <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
-            </div>
-
-            <!-- Investigador 3 -->
-            <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green hover:scale-105 transition-transform">
-                <img src="/img/LuisGonzales.png" alt="Lic. Luis Alberto Garcia Gonzalez" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
-                <h3 class="text-xl font-bold text-text-main">Lic. Luis Alberto Garcia Gonzalez</h3>
-                <p class="text-text-secondary text-sm mb-6">Docente de cátedra</p>
-                <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
-            </div>
-            
-              <!-- Investigador 4 -->
-            <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green hover:scale-105 transition-transform">
-                <img src="/img/AndreaGarcia.jpg" alt="Ing. Andrea Garcia Rivas" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
-                <h3 class="text-xl font-bold text-text-main">Ing. Andrea Garcia Rivas</h3>
-                <p class="text-text-secondary text-sm mb-6">Docente de planta</p>
-                <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
-            </div>
-
-              <!-- Investigador 5 -->
-            <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green hover:scale-105 transition-transform">
-                <img src="/img/KarenGarcia.jpg" alt="Dr. Karen Patricia Gaitán de los Ríosz" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
-                <h3 class="text-xl font-bold text-text-main">Dr. Karen Patricia Gaitán de los Ríos</h3>
-                <p class="text-text-secondary text-sm mb-6">Doctora con énfasis en Física de la Atmósfera y Física Computacional</p>
-                <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
-            </div>
-
-              <!-- Investigador 6 -->
-            <div class="bg-card-bg rounded-2xl shadow-lg p-8 flex flex-col items-center border-2 border-border-green hover:scale-105 transition-transform">
-                <img src="/img/JuanLeal.jpg" alt="Juan David Leal Campuzano" class="w-36 h-36 rounded-full mb-4 object-cover shadow-md">
-                <h3 class="text-xl font-bold text-text-main">Juan David Leal Campuzano</h3>
-                <p class="text-text-secondary text-sm mb-6">Matemático egresado de la Universidad Distrital Francisco José de Caldas</p>
-                <a href="#" class="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-semibold transition">Ver más</a>
-            </div>
+      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        <!-- Misión -->
+        <div class="bg-white rounded-3xl shadow p-6 text-center" data-aos="fade-up">
+          <!-- IMAGEN MISIÓN -->
+          <img src="img/mision.png" alt="Misión" class="mx-auto mb-4 w-52 h-auto">
+          <h3 class="font-bold text-gray-700 text-xl mb-2">MISIÓN</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            El grupo propende por el adecuado uso de las Tecnologías de la Información,
+            comunicación y el conocimiento: TICC, tanto en espacios presenciales como en
+            los distintos espacios virtuales: e-learning, b-learning y m-learning.
+          </p>
         </div>
-    </div>
-</section>
-<!-- FIN DE LA SECCIÓN DE INVESTIGADORES -->
-    <!-- FILOSOFÍA -->
-<section id="filosofia" class="bg-[#f3f0e4] py-16 px-4">
-  <h2 class="text-4xl font-bold text-center mb-10 text-[#6bb36b]">Filosofía</h2>
 
-  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        <!-- Visión -->
+        <div class="bg-white rounded-3xl shadow p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+          <!-- IMAGEN VISIÓN -->
+          <img src="img/vision.png" alt="Visión" class="mx-auto mb-4 w-52 h-auto">
+          <h3 class="font-bold text-gray-700 text-xl mb-2">VISIÓN</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Para el año 2026, nos proyectamos como un grupo de investigación de alto
+            prestigio, reconocido Nacional e Internacionalmente, por su contribución a la
+            adecuada gestión en el uso y apropiación de las Tecnologías de la Información,
+            comunicación y el conocimiento: TICC, tanto en educación como en la empresa.
+          </p>
+        </div>
 
-    <!-- Misión -->
-    <div class="bg-white rounded-3xl shadow p-6 text-center">
-      <!-- IMAGEN MISIÓN -->
-      <img src="img/mision.png" 
-           alt="Misión" 
-           class="mx-auto mb-4 w-52 h-auto">
+        <!-- Línea de Investigación -->
+        <div class="bg-white rounded-3xl shadow p-6 text-center" data-aos="fade-up" data-aos-delay="200">
+          <!-- IMAGEN LÍNEA -->
+          <img src="img/linea.png" alt="Línea de investigación" class="mx-auto mb-4 w-52 h-auto">
+          <h3 class="font-bold text-gray-700 text-xl mb-2">
+            LÍNEA DE INVESTIGACIÓN<br>INSTITUCIONAL
+          </h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Hace parte de la línea de investigación denominada “Tecnologías de la
+            información y la comunicación - TIC”.
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <h3 class="font-bold text-gray-700 text-xl mb-2">MISIÓN</h3>
-      <p class="text-gray-600 text-sm leading-relaxed">
-        El grupo propende por el adecuado uso de las Tecnologías de la Información,
-        comunicación y el conocimiento: TICC, tanto en espacios presenciales como en
-        los distintos espacios virtuales: e-learning, b-learning y m-learning.
-      </p>
-    </div>
+    <!-- ORIGEN -->
+    <section id="origen" class="bg-[#f3f0e4] py-16 px-4" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-center text-[#1e3391] mb-10">Origen</h2>
 
-    <!-- Visión -->
-    <div class="bg-white rounded-3xl shadow p-6 text-center">
-      <!-- IMAGEN VISIÓN -->
-      <img src="img/vision.png" 
-           alt="Visión" 
-           class="mx-auto mb-4 w-52 h-auto">
+      <div class="max-w-5xl mx-auto bg-[#f9f6e9] rounded-3xl shadow p-8 grid md:grid-cols-3 gap-6">
+        <!-- IMAGEN LOGO -->
+        <div class="flex justify-center items-start">
+          <img src="img/logo_virtus.png" alt="Logo Virtus" class="w-40 md:w-48 mt-2">
+        </div>
 
-      <h3 class="font-bold text-gray-700 text-xl mb-2">VISIÓN</h3>
-      <p class="text-gray-600 text-sm leading-relaxed">
-        Para el año 2026, nos proyectamos como un grupo de investigación de alto
-        prestigio, reconocido Nacional e Internacionalmente, por su contribución a la
-        adecuada gestión en el uso y apropiación de las Tecnologías de la Información,
-        comunicación y el conocimiento: TICC, tanto en educación como en la empresa.
-      </p>
-    </div>
+        <div class="md:col-span-2">
+          <p class="text-gray-700 text-sm leading-relaxed mb-3">
+            <strong>Autor del Nombre</strong><br>
+            Ing. Hernán Darío Cortés. (Miembro Fundador. Subdirector del Grupo 2007 - 2012)  
+            Docente de Planta de la Escuela Tecnológica Instituto Técnico Central.
+          </p>
 
-    <!-- Línea de Investigación -->
-    <div class="bg-white rounded-3xl shadow p-6 text-center">
-      <!-- IMAGEN LÍNEA -->
-      <img src="img/linea.png" 
-           alt="Línea de investigación" 
-           class="mx-auto mb-4 w-52 h-auto">
+          <p class="text-gray-700 text-sm leading-relaxed mb-3">
+            <strong>Características del Nombre</strong><br>
+            Fácil de pronunciar y de escribir<br>
+            Con sonoridad<br>
+            Con representación semántica de la misión del grupo<br>
+            Con relación al Instituto Técnico Central - Escuela Tecnológica
+          </p>
 
-      <h3 class="font-bold text-gray-700 text-xl mb-2">
-        LÍNEA DE INVESTIGACIÓN<br>INSTITUCIONAL
-      </h3>
-      <p class="text-gray-600 text-sm leading-relaxed">
-        Hace parte de la línea de investigación denominada “Tecnologías de la
-        información y la comunicación - TIC”.
-      </p>
-    </div>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            <strong>Justificación</strong><br>
+            Virtus es una palabra latina, idioma que tiene sonoridad y a él recurren con
+            frecuencia la ciencia y la educación para expresar sus conceptos.  
+            El grupo Virtus tiene en su misión la investigación en educación. La palabra Virtus es corta,
+            fácil de escribir, fácil de pronunciar y fácil de transcribir.  
+            Virtus es la raíz latina de virtual, el término español que hace parte de la misión del grupo:
+            el estudio sobre las herramientas virtuales que se usan en educación.  
+            Virtus hace parte del lema del Instituto Técnico Central - Escuela Tecnológica:  
+            <strong>UBI LABOR IBI VIRTUS.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
 
-  </div>
-</section>
+    <!-- OBJETIVOS -->
+    <section id="objetivos" class="bg-[#f3f0e4] py-16 px-4">
+      <h2 class="text-4xl font-bold text-center text-[#6bb36b] mb-3">Objetivos</h2>
 
-<!-- ORIGEN -->
-<section id="origen" class="bg-[#f3f0e4] py-16 px-4">
-  <h2 class="text-4xl font-bold text-center text-[#1e3391] mb-10">Origen</h2>
-
-  <div class="max-w-5xl mx-auto bg-[#f9f6e9] rounded-3xl shadow p-8 grid md:grid-cols-3 gap-6">
-
-    <!-- IMAGEN LOGO -->
-    <div class="flex justify-center items-start">
-      <img src="img/logo_virtus.png" 
-           alt="Logo Virtus"
-           class="w-40 md:w-48 mt-2">
-    </div>
-
-    <div class="md:col-span-2">
-      <p class="text-gray-700 text-sm leading-relaxed mb-3">
-        <strong>Autor del Nombre</strong><br>
-        Ing. Hernán Darío Cortés. (Miembro Fundador. Subdirector del Grupo 2007 - 2012)  
-        Docente de Planta de la Escuela Tecnológica Instituto Técnico Central.
-      </p>
-
-      <p class="text-gray-700 text-sm leading-relaxed mb-3">
-        <strong>Características del Nombre</strong><br>
-        Fácil de pronunciar y de escribir<br>
-        Con sonoridad<br>
-        Con representación semántica de la misión del grupo<br>
-        Con relación al Instituto Técnico Central - Escuela Tecnológica
+      <p class="text-center text-[#1e3391] font-semibold max-w-4xl mx-auto mb-10">
+        Investigar en el uso, apropiación y aplicación: de las Tecnologías de la Información, 
+        la Comunicación y el Conocimiento: TICC, en educación y la empresa.
       </p>
 
-      <p class="text-gray-700 text-sm leading-relaxed">
-        <strong>Justificación</strong><br>
-        Virtus es una palabra latina, idioma que tiene sonoridad y a él recurren con
-        frecuencia la ciencia y la educación para expresar sus conceptos.  
-        El grupo Virtus tiene en su misión la investigación en educación. La palabra Virtus es corta,
-        fácil de escribir, fácil de pronunciar y fácil de transcribir.  
-        Virtus es la raíz latina de virtual, el término español que hace parte de la misión del grupo:
-        el estudio sobre las herramientas virtuales que se usan en educación.  
-        Virtus hace parte del lema del Instituto Técnico Central - Escuela Tecnológica:  
-        <strong>UBI LABOR IBI VIRTUS.</strong>
-      </p>
-    </div>
-  </div>
-</section>
-<!-- OBJETIVOS -->
-<section id="objetivos" class="bg-[#f3f0e4] py-16 px-4">
-  
-  <!-- Título -->
-  <h2 class="text-4xl font-bold text-center text-[#6bb36b] mb-3">
-    Objetivos
-  </h2>
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+        <div class="bg-[#f9f6e9] p-6 rounded-3xl shadow" data-aos="fade-right">
+          <ul class="space-y-3 text-gray-700 text-sm leading-relaxed">
+            <li class="flex items-start"><span class="text-blue-600 text-lg mr-2">•</span>Analizar la incidencia de la educación virtual en la enseñanza superior.</li>
+            <li class="flex items-start"><span class="text-blue-600 text-lg mr-2">•</span>Reflexionar en torno a la educación virtual en la educación Superior.</li>
+            <li class="flex items-start"><span class="text-blue-600 text-lg mr-2">•</span>Desarrollar material didáctico para ambientes y herramientas Virtuales de Aprendizaje.</li>
+            <li class="flex items-start"><span class="text-blue-600 text-lg mr-2">•</span>Diseñar Cursos virtuales como apoyo a la presencialidad en la educación Técnica y Tecnológica.</li>
+            <li class="flex items-start"><span class="text-blue-600 text-lg mr-2">•</span>Contribuir al desarrollo de los docentes de educación superior frente a las competencias pedagógicas apoyadas con las TIC.</li>
+          </ul>
+        </div>
 
-  <!-- Subtítulo -->
-  <p class="text-center text-[#1e3391] font-semibold max-w-4xl mx-auto mb-10">
-    Investigar en el uso, apropiación y aplicación: de las Tecnologías de la Información, 
-    la Comunicación y el Conocimiento: TICC, en educación y la empresa.
-  </p>
-
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-
-    <!-- Lista de objetivos -->
-    <div class="bg-[#f9f6e9] p-6 rounded-3xl shadow">
-      <ul class="space-y-3 text-gray-700 text-sm leading-relaxed">
-
-        <li class="flex items-start">
-          <span class="text-blue-600 text-lg mr-2">•</span>
-          Analizar la incidencia de la educación virtual en la enseñanza superior.
-        </li>
-
-        <li class="flex items-start">
-          <span class="text-blue-600 text-lg mr-2">•</span>
-          Reflexionar en torno a la educación virtual en la educación Superior.
-        </li>
-
-        <li class="flex items-start">
-          <span class="text-blue-600 text-lg mr-2">•</span>
-          Desarrollar material didáctico para ambientes y herramientas Virtuales de Aprendizaje.
-        </li>
-
-        <li class="flex items-start">
-          <span class="text-blue-600 text-lg mr-2">•</span>
-          Diseñar Cursos virtuales como apoyo a la presencialidad en la educación Técnica y Tecnológica.
-        </li>
-
-        <li class="flex items-start">
-          <span class="text-blue-600 text-lg mr-2">•</span>
-          Contribuir al desarrollo de los docentes de educación superior frente a las competencias pedagógicas apoyadas con las TIC.
-        </li>
-      </ul>
-    </div>
-
-    <!-- Imagen de objetivos -->
-    <div class="flex justify-center">
-      <!-- IMAGEN OBJETIVOS -->
-      <img src="img/objetivos.png" 
-           alt="Objetivos" 
-           class="w-72 md:w-80 h-auto">
-    </div>
-  </div>
-</section>
+        <div class="flex justify-center" data-aos="fade-left">
+          <!-- IMAGEN OBJETIVOS -->
+          <img src="img/objetivos.png" alt="Objetivos" class="w-72 md:w-80 h-auto">
+        </div>
+      </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-footer-bg text-white py-12">
@@ -680,6 +680,51 @@
             </div>
         </div>
     </footer>
+
+    <!-- SCRIPTS (AOS init, reveal fallback y nav behavior) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar AOS
+        AOS.init({
+            duration: 900,
+            easing: 'ease-out-quart',
+            once: true,
+            mirror: false
+        });
+
+        // Reveal simple: añade clase .reveal a los .fade-up cuando entran en pantalla
+        const revealItems = document.querySelectorAll('.fade-up');
+        const revealOnScroll = () => {
+            revealItems.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 80) el.classList.add('reveal');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+        revealOnScroll();
+
+        // NAV: cambiar estilo al hacer scroll (sombra + blur)
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) {
+                nav.classList.add('backdrop-blur-lg', 'bg-white/70', 'shadow-xl');
+            } else {
+                nav.classList.remove('backdrop-blur-lg', 'bg-white/70', 'shadow-xl');
+            }
+        });
+
+        // Smooth scroll para anchor links (mejora UX)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          });
+        });
+    </script>
 
 </body>
 </html>
