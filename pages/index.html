@@ -1,6 +1,6 @@
-
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <!-- Animate.css (entradas adicionales) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -39,7 +39,7 @@
                             hover: '#15803d',
                             light: '#86efac',
                         },
-                        
+
                         secondary: {
                             50: '#eff6ff',
                             100: '#dbeafe',
@@ -54,7 +54,7 @@
                             DEFAULT: '#2563eb',
                             hover: '#1d4ed8',
                         },
-                        
+
                         accent: {
                             50: '#fef2f2',
                             100: '#fee2e2',
@@ -69,7 +69,7 @@
                             DEFAULT: '#ef4444',
                             hover: '#dc2626',
                         },
-                        
+
                         neutral: {
                             50: '#f9fafb',
                             100: '#f3f4f6',
@@ -82,7 +82,7 @@
                             800: '#1f2937',
                             900: '#111827',
                         },
-                        
+
                         // FONDOS ESPECÍFICOS
                         background: {
                             body: '#e7e7dd',
@@ -93,7 +93,7 @@
                             'section-cream': '#f3f0e4',
                             'section-light': '#f9f6e9',
                         },
-                        
+
                         // FOOTER - VERDE OSCURO (como en la imagen)
                         footer: {
                             DEFAULT: '#1f3b1a',  // VERDE OSCURO
@@ -110,11 +110,11 @@
                             border: '#374151',
                             text: '#d1d5db',
                         },
-                        
+
                         banner: {
                             DEFAULT: '#4b5563',
                         },
-                        
+
                         // TEXTOS
                         text: {
                             primary: '#1f2937',
@@ -125,7 +125,7 @@
                             heading: '#15803d',
                             'hero-highlight': '#fde047',
                         },
-                        
+
                         // BORDES
                         border: {
                             green: '#86efac',
@@ -167,13 +167,13 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        
+
         body {
             background-color: #e7e7dd;
             background-attachment: fixed;
             scroll-behavior: smooth;
         }
-        
+
         .hero-overlay {
             background: linear-gradient(135deg, rgba(22, 163, 74, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
         }
@@ -189,10 +189,19 @@
         .float {
             animation: float 4s ease-in-out infinite;
         }
+
         @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0); }
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
         }
 
         /* REVEAL simple para fallback (si JS tarda) */
@@ -201,6 +210,7 @@
             transform: translateY(24px);
             transition: opacity 0.9s ease, transform 0.9s ease;
         }
+
         .fade-up.reveal {
             opacity: 1;
             transform: translateY(0);
@@ -225,13 +235,16 @@
         ::-webkit-scrollbar {
             width: 10px;
         }
+
         ::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #16a34a;
             border-radius: 5px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #15803d;
         }
@@ -241,6 +254,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .shine::after {
             content: '';
             position: absolute;
@@ -248,67 +262,153 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(
-                to right,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 0.1) 50%,
-                rgba(255, 255, 255, 0) 100%
-            );
+            background: linear-gradient(to right,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.1) 50%,
+                    rgba(255, 255, 255, 0) 100%);
             transform: rotate(30deg);
             transition: all 0.6s;
         }
+
         .shine:hover::after {
             left: 100%;
         }
+
+        /* TIMELINE styles */
+        .timeline-container {
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: #bbf7d0;
+            /* primary-200 */
+            z-index: 1;
+        }
+
+        .timeline-year {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .timeline-year-badge {
+            background-color: #16a34a;
+            /* primary-600 */
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            display: inline-block;
+            font-weight: bold;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item {
+            position: relative;
+            z-index: 10;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #16a34a;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #bbf7d0;
+            z-index: 20;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 1.5rem;
+            }
+
+            .timeline-dot {
+                left: 1.5rem;
+            }
+
+            .timeline-content {
+                padding-left: 3.5rem;
+            }
+        }
     </style>
 </head>
+
 <body class="font-poppins">
 
     <!-- NAV (se agregó efecto al hacer scroll via JS) -->
-    <nav id="mainNav" class="bg-white/90 backdrop-blur-sm shadow-lg fixed w-full top-0 z-50 transition-all duration-300 border-b border-primary-200">
+    <nav id="mainNav"
+        class="bg-white/90 backdrop-blur-sm shadow-lg fixed w-full top-0 z-50 transition-all duration-300 border-b border-primary-200">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <div class="flex items-center space-x-3 group cursor-pointer">
                     <div class="relative">
-                        <div class="absolute inset-0 bg-primary-500 rounded-full blur group-hover:blur-lg transition duration-300"></div>
-                        <img src="/img/VirtusBG.png" alt="Logo Virtus" class="h-12 w-12 relative z-10 transform group-hover:scale-110 transition duration-300">
+                        <div
+                            class="absolute inset-0 bg-primary-500 rounded-full blur group-hover:blur-lg transition duration-300">
+                        </div>
+                        <img src="/img/VirtusBG.png" alt="Logo Virtus"
+                            class="h-12 w-12 relative z-10 transform group-hover:scale-110 transition duration-300">
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold text-primary-800 group-hover:text-primary-700 transition">Virtus</h1>
+                        <h1 class="text-xl font-bold text-primary-800 group-hover:text-primary-700 transition">Virtus
+                        </h1>
                         <p class="text-xs text-primary-600">Grupo de Investigación</p>
                     </div>
                 </div>
-                
+
                 <!-- Menú -->
                 <div class="hidden md:flex space-x-8">
-                    <a href="#inicio" class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
+                    <a href="#inicio"
+                        class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
                         <span>INICIO</span>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
                     </a>
-                    <a href="#investigadores" class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
+                    <a href="#investigadores"
+                        class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
                         <span>INVESTIGADORES</span>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
                     </a>
-                    <a href="#filosofia" class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
+                    <a href="#filosofia"
+                        class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
                         <span>FILOSOFÍA</span>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
                     </a>
-                    <a href="#origen" class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
+                    <a href="#origen"
+                        class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
                         <span>ORIGEN</span>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
                     </a>
-                    <a href="#objetivos" class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
+                    <a href="#objetivos"
+                        class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
                         <span>OBJETIVOS</span>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
                     </a>
-                    <a href="#desarrollos" class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
+                    <a href="#desarrollos"
+                        class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
                         <span>DESARROLLOS</span>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
                     </a>
-                    <a href="#contacto" class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
+                    <a href="#contacto"
+                        class="text-primary-800 hover:text-primary-600 font-semibold transition relative group">
                         <span>CONTÁCTANOS</span>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
                     </a>
                 </div>
 
@@ -320,13 +420,20 @@
 
             <!-- Mobile Menu -->
             <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-4 pb-4">
-                <a href="#inicio" class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2 border-b border-primary-100">INICIO</a>
-                <a href="#investigadores" class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2 border-b border-primary-100">INVESTIGADORES</a>
-                <a href="#filosofia" class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2 border-b border-primary-100">FILOSOFÍA</a>
-                <a href="#origen" class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2 border-b border-primary-100">ORIGEN</a>
-                <a href="#objetivos" class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2 border-b border-primary-100">OBJETIVOS</a>
-                <a href="#desarrollos" class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2 border-b border-primary-100">DESARROLLOS</a>
-                <a href="#contacto" class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2">CONTÁCTANOS</a>
+                <a href="#inicio"
+                    class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2 border-b border-primary-100">INICIO</a>
+                <a href="#investigadores"
+                    class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2 border-b border-primary-100">INVESTIGADORES</a>
+                <a href="#filosofia"
+                    class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2 border-b border-primary-100">FILOSOFÍA</a>
+                <a href="#origen"
+                    class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2 border-b border-primary-100">ORIGEN</a>
+                <a href="#objetivos"
+                    class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2 border-b border-primary-100">OBJETIVOS</a>
+                <a href="#desarrollos"
+                    class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2 border-b border-primary-100">DESARROLLOS</a>
+                <a href="#contacto"
+                    class="block text-primary-800 hover:text-primary-600 font-semibold transition py-2">CONTÁCTANOS</a>
             </div>
         </div>
     </nav>
@@ -336,7 +443,7 @@
         <div class="absolute inset-0 parallax-bg" style="background-image: url('/img/backgroundUD.png');">
             <div class="hero-overlay absolute inset-0"></div>
         </div>
-        
+
         <div class="relative container mx-auto px-6 h-full flex items-center">
             <div class="max-w-3xl" data-aos="fade-right" data-aos-delay="200">
                 <div class="inline-block mb-6">
@@ -353,22 +460,25 @@
                     Innovación educativa a través de la tecnología
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#desarrollos" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transform hover:-translate-y-1 transition duration-300 flex items-center group">
+                    <a href="#desarrollos"
+                        class="bg-primary-600 hover:bg-primary-700 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transform hover:-translate-y-1 transition duration-300 flex items-center group">
                         <i class="fas fa-rocket mr-2 group-hover:rotate-12 transition"></i>
                         Ver Desarrollos
                     </a>
-                    <a href="#investigadores" class="bg-white/20 hover:bg-white/30 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transform hover:-translate-y-1 transition duration-300 backdrop-blur-sm flex items-center group">
+                    <a href="#investigadores"
+                        class="bg-white/20 hover:bg-white/30 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transform hover:-translate-y-1 transition duration-300 backdrop-blur-sm flex items-center group">
                         <i class="fas fa-users mr-2 group-hover:scale-110 transition"></i>
                         Conoce al Equipo
                     </a>
                 </div>
             </div>
-            
+
             <!-- Ilustración de personajes (float + AOS) -->
             <div class="absolute right-10 bottom-10 hidden lg:block" data-aos="fade-left" data-aos-delay="400">
                 <div class="relative">
                     <div class="absolute -inset-4 bg-primary-500/20 rounded-full blur-xl"></div>
-                    <img src="/img/estudiante.png" alt="Ilustración estudiantes" class="w-72 relative z-10 animate-float-slow cover-img">
+                    <img src="/img/estudiante.png" alt="Ilustración estudiantes"
+                        class="w-72 relative z-10 animate-float-slow cover-img">
                 </div>
             </div>
         </div>
@@ -384,44 +494,52 @@
     <!-- ¿Quiénes Somos? (AOS reveal) -->
     <section id="quienes-somos" class="py-20 relative overflow-hidden">
         <!-- Background decoration -->
-        <div class="absolute top-0 left-0 w-64 h-64 bg-primary-100 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary-50 rounded-full translate-x-1/3 translate-y-1/3"></div>
-        
+        <div class="absolute top-0 left-0 w-64 h-64 bg-primary-100 rounded-full -translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary-50 rounded-full translate-x-1/3 translate-y-1/3">
+        </div>
+
         <div class="container mx-auto px-6 relative z-10">
             <h2 class="text-4xl font-bold text-center text-primary-800 mb-4" data-aos="zoom-in">
                 <i class="fas fa-users mr-3 text-primary-600"></i>¿QUIÉNES SOMOS?
             </h2>
-            <div class="w-24 h-1 bg-primary-600 mx-auto mb-12 rounded-full" data-aos="zoom-in" data-aos-delay="100"></div>
-            
+            <div class="w-24 h-1 bg-primary-600 mx-auto mb-12 rounded-full" data-aos="zoom-in" data-aos-delay="100">
+            </div>
+
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <!-- Texto -->
                 <div class="lg:w-2/3" data-aos="fade-right">
                     <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-primary-100">
                         <p class="text-primary-800 text-lg leading-relaxed mb-6">
                             <i class="fas fa-university text-primary-600 mr-2"></i>
-                            EL GRUPO DE INVESTIGACIÓN INTERINSTITUCIONAL COLOMBIANO ESTUDIA LOS AMBIENTES VIRTUALES SIMPLES. 
-                            ES UNA ORGANIZACIÓN AVALADA POR LA ESCUELA TECNOLÓGICA INSTITUTO TÉCNICO CENTRAL Y LA 
-                            UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS, DOS INSTITUCIONES DE EDUCACIÓN 
+                            EL GRUPO DE INVESTIGACIÓN INTERINSTITUCIONAL COLOMBIANO ESTUDIA LOS AMBIENTES VIRTUALES
+                            SIMPLES.
+                            ES UNA ORGANIZACIÓN AVALADA POR LA ESCUELA TECNOLÓGICA INSTITUTO TÉCNICO CENTRAL Y LA
+                            UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS, DOS INSTITUCIONES DE EDUCACIÓN
                             SUPERIOR PÚBLICAS, UBICADAS EN BOGOTÁ, COLOMBIA.
                         </p>
                         <p class="text-primary-800 text-lg leading-relaxed">
                             <i class="fas fa-flask text-primary-600 mr-2"></i>
-                            EL GRUPO HACE INVESTIGACIÓN EN SES LÍNEAS: AMBIENTES VIRTUALES DE 
-                            APRENDIZAJE, TECNOLOGÍA EDUCATIVA, SISTEMAS ADAPTATIVOS Y SISTEMAS RECOMENDADORES, 
-                            GAMIFICACIÓN Y VIDEOJUEGOS, INGENIERÍA WEB, GESTIÓN DEL CONOCIMIENTO Y SU APLICACIÓN 
+                            EL GRUPO HACE INVESTIGACIÓN EN SES LÍNEAS: AMBIENTES VIRTUALES DE
+                            APRENDIZAJE, TECNOLOGÍA EDUCATIVA, SISTEMAS ADAPTATIVOS Y SISTEMAS RECOMENDADORES,
+                            GAMIFICACIÓN Y VIDEOJUEGOS, INGENIERÍA WEB, GESTIÓN DEL CONOCIMIENTO Y SU APLICACIÓN
                             ORGANIZACIONAL.
                         </p>
                     </div>
                 </div>
-                
+
                 <!-- Logos (AOS) -->
                 <div class="lg:w-1/3 flex flex-col items-center space-y-8" data-aos="fade-left">
-                    <div class="bg-white p-6 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-300 border border-primary-100 shine">
-                        <img src="/img/EscudoUD.png" alt="Universidad Distrital Francisco José de Caldas" class="w-48 rounded-lg">
+                    <div
+                        class="bg-white p-6 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-300 border border-primary-100 shine">
+                        <img src="/img/EscudoUD.png" alt="Universidad Distrital Francisco José de Caldas"
+                            class="w-48 rounded-lg">
                         <p class="text-center text-primary-700 font-semibold mt-4">Universidad Distrital</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-300 border border-primary-100 shine" data-aos="fade-left" data-aos-delay="200">
-                        <img src="/img/EscudoEscuelaTecnica.png" alt="Instituto Técnico Central" class="w-48 rounded-lg">
+                    <div class="bg-white p-6 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-300 border border-primary-100 shine"
+                        data-aos="fade-left" data-aos-delay="200">
+                        <img src="/img/EscudoEscuelaTecnica.png" alt="Instituto Técnico Central"
+                            class="w-48 rounded-lg">
                         <p class="text-center text-primary-700 font-semibold mt-4">Instituto Técnico Central</p>
                     </div>
                 </div>
@@ -438,55 +556,77 @@
             <p class="text-center text-primary-600 mb-12 text-lg" data-aos="fade-up" data-aos-delay="100">
                 Explorando Innovaciones: Descubre Nuestros Avances en Desarrollo de Software
             </p>
-            
+
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- ODIN -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 text-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine" data-aos="zoom-in" data-aos-delay="100">
+                <div class="bg-white rounded-2xl shadow-xl p-8 text-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine"
+                    data-aos="zoom-in" data-aos-delay="100">
                     <div class="relative mb-6">
-                        <div class="absolute inset-0 bg-primary-500 rounded-full blur group-hover:blur-xl transition duration-300"></div>
-                        <img src="/img/ODIN.png" alt="ODIN Logo" class="w-32 h-32 mx-auto relative z-10 transform group-hover:rotate-6 transition duration-300">
+                        <div
+                            class="absolute inset-0 bg-primary-500 rounded-full blur group-hover:blur-xl transition duration-300">
+                        </div>
+                        <img src="/img/ODIN.png" alt="ODIN Logo"
+                            class="w-32 h-32 mx-auto relative z-10 transform group-hover:rotate-6 transition duration-300">
                     </div>
-                    <h3 class="text-2xl font-bold text-primary-800 mb-4 group-hover:text-primary-700 transition">ODIN</h3>
+                    <h3 class="text-2xl font-bold text-primary-800 mb-4 group-hover:text-primary-700 transition">ODIN
+                    </h3>
                     <p class="text-primary-600 mb-6 leading-relaxed">
-                        Este permite la resolución de problemas para la comunidad educativa basándose en el procesamiento de lenguaje natural basado en problemas que parte de los técnicos, herramientas y recursos.
+                        Este permite la resolución de problemas para la comunidad educativa basándose en el
+                        procesamiento de lenguaje natural basado en problemas que parte de los técnicos, herramientas y
+                        recursos.
                     </p>
-                    <button class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold px-6 py-3 rounded-full transition transform hover:-translate-y-1 shadow-lg group">
+                    <button
+                        class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold px-6 py-3 rounded-full transition transform hover:-translate-y-1 shadow-lg group">
                         <span class="flex items-center justify-center">
                             <i class="fas fa-external-link-alt mr-2 group-hover:translate-x-1 transition"></i>
                             Conoce más
                         </span>
                     </button>
                 </div>
-                
+
                 <!-- Herramientas Digitales -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 text-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine" data-aos="zoom-in" data-aos-delay="200">
+                <div class="bg-white rounded-2xl shadow-xl p-8 text-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine"
+                    data-aos="zoom-in" data-aos-delay="200">
                     <div class="relative mb-6">
-                        <div class="absolute inset-0 bg-primary-500 rounded-full blur group-hover:blur-xl transition duration-300"></div>
-                        <img src="/img/HerramientasDigitales.png" alt="Herramientas Digitales" class="w-32 h-32 mx-auto relative z-10 transform group-hover:rotate-6 transition duration-300">
+                        <div
+                            class="absolute inset-0 bg-primary-500 rounded-full blur group-hover:blur-xl transition duration-300">
+                        </div>
+                        <img src="/img/HerramientasDigitales.png" alt="Herramientas Digitales"
+                            class="w-32 h-32 mx-auto relative z-10 transform group-hover:rotate-6 transition duration-300">
                     </div>
-                    <h3 class="text-2xl font-bold text-primary-800 mb-4 group-hover:text-primary-700 transition">Herramientas Digitales</h3>
+                    <h3 class="text-2xl font-bold text-primary-800 mb-4 group-hover:text-primary-700 transition">
+                        Herramientas Digitales</h3>
                     <p class="text-primary-600 mb-6 leading-relaxed">
-                        Esta plataforma permite a los docentes su aplicación en sus grupos académicos específicos para desarrollar prácticas en el proceso enseñanza-aprendizaje.
+                        Esta plataforma permite a los docentes su aplicación en sus grupos académicos específicos para
+                        desarrollar prácticas en el proceso enseñanza-aprendizaje.
                     </p>
-                    <button class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold px-6 py-3 rounded-full transition transform hover:-translate-y-1 shadow-lg group">
+                    <button
+                        class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold px-6 py-3 rounded-full transition transform hover:-translate-y-1 shadow-lg group">
                         <span class="flex items-center justify-center">
                             <i class="fas fa-external-link-alt mr-2 group-hover:translate-x-1 transition"></i>
                             Conoce más
                         </span>
                     </button>
                 </div>
-                
+
                 <!-- Competencias TIC -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 text-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine" data-aos="zoom-in" data-aos-delay="300">
+                <div class="bg-white rounded-2xl shadow-xl p-8 text-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine"
+                    data-aos="zoom-in" data-aos-delay="300">
                     <div class="relative mb-6">
-                        <div class="absolute inset-0 bg-primary-500 rounded-full blur group-hover:blur-xl transition duration-300"></div>
-                        <img src="/img/CompetenciasTIC.png" alt="Competencias TIC" class="w-32 h-32 mx-auto relative z-10 transform group-hover:rotate-6 transition duration-300">
+                        <div
+                            class="absolute inset-0 bg-primary-500 rounded-full blur group-hover:blur-xl transition duration-300">
+                        </div>
+                        <img src="/img/CompetenciasTIC.png" alt="Competencias TIC"
+                            class="w-32 h-32 mx-auto relative z-10 transform group-hover:rotate-6 transition duration-300">
                     </div>
-                    <h3 class="text-2xl font-bold text-primary-800 mb-4 group-hover:text-primary-700 transition">Competencias TIC</h3>
+                    <h3 class="text-2xl font-bold text-primary-800 mb-4 group-hover:text-primary-700 transition">
+                        Competencias TIC</h3>
                     <p class="text-primary-600 mb-6 leading-relaxed">
-                        Esta aplicación permite evaluar el modelo y recibir un informe de grado de dominio a partir del perfil definido en el manejo de las Tecnologías de la Información y la Comunicación.
+                        Esta aplicación permite evaluar el modelo y recibir un informe de grado de dominio a partir del
+                        perfil definido en el manejo de las Tecnologías de la Información y la Comunicación.
                     </p>
-                    <button class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold px-6 py-3 rounded-full transition transform hover:-translate-y-1 shadow-lg group">
+                    <button
+                        class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold px-6 py-3 rounded-full transition transform hover:-translate-y-1 shadow-lg group">
                         <span class="flex items-center justify-center">
                             <i class="fas fa-external-link-alt mr-2 group-hover:translate-x-1 transition"></i>
                             Conoce más
@@ -506,31 +646,38 @@
             <p class="text-center text-primary-600 mb-12 text-lg" data-aos="fade-up" data-aos-delay="100">
                 6 áreas especializadas de investigación tecnológica y educativa
             </p>
-            
+
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- Línea 1 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 fade-up transform hover:-translate-y-2 transition duration-300 border-l-4 border-primary-500" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white rounded-xl shadow-lg p-6 fade-up transform hover:-translate-y-2 transition duration-300 border-l-4 border-primary-500"
+                    data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center mb-4">
                         <div class="bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl p-3 mr-3 shadow-md">
                             <i class="fas fa-laptop-code text-white text-xl"></i>
                         </div>
-                        <h3 class="font-bold text-primary-800 text-lg">Ambientes y Herramientas Virtuales de Aprendizaje</h3>
+                        <h3 class="font-bold text-primary-800 text-lg">Ambientes y Herramientas Virtuales de Aprendizaje
+                        </h3>
                     </div>
                     <p class="text-primary-600 text-sm mb-4">
-                        Estudia las TIC como dispositivos digitales que facilitan procesos de enseñanza, aprendizaje efectivos y accesibles.
+                        Estudia las TIC como dispositivos digitales que facilitan procesos de enseñanza, aprendizaje
+                        efectivos y accesibles.
                     </p>
                     <ul class="text-primary-700 text-sm space-y-1 mb-4">
-                        <li class="flex items-center"><i class="fas fa-vr-cardboard text-primary-500 mr-2"></i>Realidad Virtual-Aumentada</li>
-                        <li class="flex items-center"><i class="fas fa-tablet-alt text-primary-500 mr-2"></i>Tabletas educativas</li>
+                        <li class="flex items-center"><i class="fas fa-vr-cardboard text-primary-500 mr-2"></i>Realidad
+                            Virtual-Aumentada</li>
+                        <li class="flex items-center"><i class="fas fa-tablet-alt text-primary-500 mr-2"></i>Tabletas
+                            educativas</li>
                     </ul>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 text-sm font-semibold flex items-center group">
+                    <a href="#"
+                        class="text-primary-600 hover:text-primary-700 text-sm font-semibold flex items-center group">
                         <span>Ver más</span>
                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
                     </a>
                 </div>
-                
+
                 <!-- Línea 2 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 fade-up transform hover:-translate-y-2 transition duration-300 border-l-4 border-primary-500" data-aos="fade-up" data-aos-delay="150">
+                <div class="bg-white rounded-xl shadow-lg p-6 fade-up transform hover:-translate-y-2 transition duration-300 border-l-4 border-primary-500"
+                    data-aos="fade-up" data-aos-delay="150">
                     <div class="flex items-center mb-4">
                         <div class="bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl p-3 mr-3 shadow-md">
                             <i class="fas fa-chalkboard-teacher text-white text-xl"></i>
@@ -538,42 +685,53 @@
                         <h3 class="font-bold text-primary-800 text-lg">Tecnología Educativa</h3>
                     </div>
                     <p class="text-primary-600 text-sm mb-4">
-                        Integra herramientas digitales e interactivas en espacios formativos para enriquecer las habilidades informáticas.
+                        Integra herramientas digitales e interactivas en espacios formativos para enriquecer las
+                        habilidades informáticas.
                     </p>
                     <ul class="text-primary-700 text-sm space-y-1 mb-4">
-                        <li class="flex items-center"><i class="fas fa-tools text-primary-500 mr-2"></i>Herramientas árabes</li>
-                        <li class="flex items-center"><i class="fas fa-network-wired text-primary-500 mr-2"></i>Telemática digital</li>
-                        <li class="flex items-center"><i class="fas fa-robot text-primary-500 mr-2"></i>Retroalimentación automática</li>
+                        <li class="flex items-center"><i class="fas fa-tools text-primary-500 mr-2"></i>Herramientas
+                            árabes</li>
+                        <li class="flex items-center"><i
+                                class="fas fa-network-wired text-primary-500 mr-2"></i>Telemática digital</li>
+                        <li class="flex items-center"><i
+                                class="fas fa-robot text-primary-500 mr-2"></i>Retroalimentación automática</li>
                     </ul>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 text-sm font-semibold flex items-center group">
+                    <a href="#"
+                        class="text-primary-600 hover:text-primary-700 text-sm font-semibold flex items-center group">
                         <span>Ver más</span>
                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
                     </a>
                 </div>
-                
+
                 <!-- Línea 3 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 fade-up transform hover:-translate-y-2 transition duration-300 border-l-4 border-primary-500" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white rounded-xl shadow-lg p-6 fade-up transform hover:-translate-y-2 transition duration-300 border-l-4 border-primary-500"
+                    data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center mb-4">
                         <div class="bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl p-3 mr-3 shadow-md">
                             <i class="fas fa-user-cog text-white text-xl"></i>
                         </div>
-                        <h3 class="font-bold text-primary-800 text-lg">Sistemas Adaptativos y Sistemas Recomendadores</h3>
+                        <h3 class="font-bold text-primary-800 text-lg">Sistemas Adaptativos y Sistemas Recomendadores
+                        </h3>
                     </div>
                     <p class="text-primary-600 text-sm mb-4">
                         Estas tecnologías permiten adaptar el usuario y proporcionar experiencias personalizadas.
                     </p>
                     <ul class="text-primary-700 text-sm space-y-1 mb-4">
-                        <li class="flex items-center"><i class="fas fa-user-edit text-primary-500 mr-2"></i>Personalización adaptativa</li>
-                        <li class="flex items-center"><i class="fas fa-thumbs-up text-primary-500 mr-2"></i>Sistemas de recomendación</li>
+                        <li class="flex items-center"><i
+                                class="fas fa-user-edit text-primary-500 mr-2"></i>Personalización adaptativa</li>
+                        <li class="flex items-center"><i class="fas fa-thumbs-up text-primary-500 mr-2"></i>Sistemas de
+                            recomendación</li>
                     </ul>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 text-sm font-semibold flex items-center group">
+                    <a href="#"
+                        class="text-primary-600 hover:text-primary-700 text-sm font-semibold flex items-center group">
                         <span>Ver más</span>
                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
                     </a>
                 </div>
-                
+
                 <!-- Línea 4 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 fade-up transform hover:-translate-y-2 transition duration-300 border-l-4 border-primary-500" data-aos="fade-up" data-aos-delay="250">
+                <div class="bg-white rounded-xl shadow-lg p-6 fade-up transform hover:-translate-y-2 transition duration-300 border-l-4 border-primary-500"
+                    data-aos="fade-up" data-aos-delay="250">
                     <div class="flex items-center mb-4">
                         <div class="bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl p-3 mr-3 shadow-md">
                             <i class="fas fa-gamepad text-white text-xl"></i>
@@ -584,18 +742,23 @@
                         Incorpora elementos y dinámicas de juego para potenciar el compromiso y la motivación.
                     </p>
                     <ul class="text-primary-700 text-sm space-y-1 mb-4">
-                        <li class="flex items-center"><i class="fas fa-trophy text-primary-500 mr-2"></i>Gamificación educativa</li>
-                        <li class="flex items-center"><i class="fas fa-chess text-primary-500 mr-2"></i>Juegos Serios</li>
-                        <li class="flex items-center"><i class="fas fa-play-circle text-primary-500 mr-2"></i>Videojuegos educativos</li>
+                        <li class="flex items-center"><i class="fas fa-trophy text-primary-500 mr-2"></i>Gamificación
+                            educativa</li>
+                        <li class="flex items-center"><i class="fas fa-chess text-primary-500 mr-2"></i>Juegos Serios
+                        </li>
+                        <li class="flex items-center"><i
+                                class="fas fa-play-circle text-primary-500 mr-2"></i>Videojuegos educativos</li>
                     </ul>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 text-sm font-semibold flex items-center group">
+                    <a href="#"
+                        class="text-primary-600 hover:text-primary-700 text-sm font-semibold flex items-center group">
                         <span>Ver más</span>
                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
                     </a>
                 </div>
-                
+
                 <!-- Línea 5 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 fade-up transform hover:-translate-y-2 transition duration-300 border-l-4 border-primary-500" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white rounded-xl shadow-lg p-6 fade-up transform hover:-translate-y-2 transition duration-300 border-l-4 border-primary-500"
+                    data-aos="fade-up" data-aos-delay="300">
                     <div class="flex items-center mb-4">
                         <div class="bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl p-3 mr-3 shadow-md">
                             <i class="fas fa-globe text-white text-xl"></i>
@@ -606,32 +769,42 @@
                         Desarrollo de herramientas web robustas, escalables y centradas en el usuario.
                     </p>
                     <ul class="text-primary-700 text-sm space-y-1 mb-4">
-                        <li class="flex items-center"><i class="fas fa-code-branch text-primary-500 mr-2"></i>DesarrolloFullStack</li>
-                        <li class="flex items-center"><i class="fas fa-bolt text-primary-500 mr-2"></i>Tecnologías emergentes</li>
-                        <li class="flex items-center"><i class="fas fa-universal-access text-primary-500 mr-2"></i>Accesibilidad y Usabilidad</li>
+                        <li class="flex items-center"><i
+                                class="fas fa-code-branch text-primary-500 mr-2"></i>DesarrolloFullStack</li>
+                        <li class="flex items-center"><i class="fas fa-bolt text-primary-500 mr-2"></i>Tecnologías
+                            emergentes</li>
+                        <li class="flex items-center"><i
+                                class="fas fa-universal-access text-primary-500 mr-2"></i>Accesibilidad y Usabilidad
+                        </li>
                     </ul>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 text-sm font-semibold flex items-center group">
+                    <a href="#"
+                        class="text-primary-600 hover:text-primary-700 text-sm font-semibold flex items-center group">
                         <span>Ver más</span>
                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
                     </a>
                 </div>
-                
+
                 <!-- Línea 6 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 fade-up transform hover:-translate-y-2 transition duration-300 border-l-4 border-primary-500" data-aos="fade-up" data-aos-delay="350">
+                <div class="bg-white rounded-xl shadow-lg p-6 fade-up transform hover:-translate-y-2 transition duration-300 border-l-4 border-primary-500"
+                    data-aos="fade-up" data-aos-delay="350">
                     <div class="flex items-center mb-4">
                         <div class="bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl p-3 mr-3 shadow-md">
                             <i class="fas fa-brain text-white text-xl"></i>
                         </div>
-                        <h3 class="font-bold text-primary-800 text-lg">Gestión del Conocimiento y su Aplicación Organizacional</h3>
+                        <h3 class="font-bold text-primary-800 text-lg">Gestión del Conocimiento y su Aplicación
+                            Organizacional</h3>
                     </div>
                     <p class="text-primary-600 text-sm mb-4">
                         Evaluación y herramientas para la mejora y gestión del capital humano en las organizaciones.
                     </p>
                     <ul class="text-primary-700 text-sm space-y-1 mb-4">
-                        <li class="flex items-center"><i class="fas fa-chart-line text-primary-500 mr-2"></i>Evaluación Organizacional</li>
-                        <li class="flex items-center"><i class="fas fa-user-graduate text-primary-500 mr-2"></i>Competencias profesionales</li>
+                        <li class="flex items-center"><i class="fas fa-chart-line text-primary-500 mr-2"></i>Evaluación
+                            Organizacional</li>
+                        <li class="flex items-center"><i
+                                class="fas fa-user-graduate text-primary-500 mr-2"></i>Competencias profesionales</li>
                     </ul>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 text-sm font-semibold flex items-center group">
+                    <a href="#"
+                        class="text-primary-600 hover:text-primary-700 text-sm font-semibold flex items-center group">
                         <span>Ver más</span>
                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
                     </a>
@@ -649,27 +822,34 @@
             <p class="text-center text-primary-600 mb-12 text-lg" data-aos="fade-up" data-aos-delay="100">
                 Últimos avances y publicaciones del grupo
             </p>
-            
-            <div class="bg-gradient-to-r from-primary-600 to-primary-700 text-center py-5 rounded-xl mb-8 shadow-lg transform hover:scale-[1.02] transition duration-300" data-aos="zoom-in">
+
+            <div class="bg-gradient-to-r from-primary-600 to-primary-700 text-center py-5 rounded-xl mb-8 shadow-lg transform hover:scale-[1.02] transition duration-300"
+                data-aos="zoom-in">
                 <p class="text-white font-semibold text-xl">
                     <i class="fas fa-bullhorn mr-2"></i>
                     Conoce nuestras publicaciones y más
                 </p>
             </div>
-            
+
             <!-- Publicación 1 -->
-            <div class="bg-gradient-to-r from-white to-primary-50 rounded-xl shadow-xl mb-6 overflow-hidden border-2 border-primary-200 group transform hover:-translate-y-1 transition duration-300" data-aos="fade-right">
+            <div class="bg-gradient-to-r from-white to-primary-50 rounded-xl shadow-xl mb-6 overflow-hidden border-2 border-primary-200 group transform hover:-translate-y-1 transition duration-300"
+                data-aos="fade-right">
                 <div class="flex flex-col md:flex-row">
                     <div class="md:w-2/3 p-8">
                         <div class="flex items-center mb-4">
-                            <span class="bg-primary-100 text-primary-800 text-sm font-semibold px-3 py-1 rounded-full">Última Publicación</span>
-                            <span class="ml-4 text-primary-500 text-sm"><i class="far fa-calendar mr-1"></i> Abril 2024</span>
+                            <span
+                                class="bg-primary-100 text-primary-800 text-sm font-semibold px-3 py-1 rounded-full">Última
+                                Publicación</span>
+                            <span class="ml-4 text-primary-500 text-sm"><i class="far fa-calendar mr-1"></i> Abril
+                                2024</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-primary-800 mt-2 mb-4 group-hover:text-primary-700 transition">
+                        <h3
+                            class="text-2xl font-bold text-primary-800 mt-2 mb-4 group-hover:text-primary-700 transition">
                             Avances en Sistemas Adaptativos para Educación Virtual
                         </h3>
                         <p class="text-primary-600 mb-4">
-                            Investigación sobre la implementación de sistemas inteligentes que se adaptan al ritmo de aprendizaje de cada estudiante, mejorando los resultados académicos en entornos virtuales.
+                            Investigación sobre la implementación de sistemas inteligentes que se adaptan al ritmo de
+                            aprendizaje de cada estudiante, mejorando los resultados académicos en entornos virtuales.
                         </p>
                         <div class="flex items-center text-primary-700">
                             <i class="fas fa-user-circle mr-2"></i>
@@ -678,24 +858,32 @@
                     </div>
                     <div class="md:w-1/3 relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-t from-primary-800/30 to-transparent z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Investigación en educación virtual" class="w-full h-64 md:h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Investigación en educación virtual"
+                            class="w-full h-64 md:h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
                 </div>
             </div>
-            
+
             <!-- Publicación 2 -->
-            <div class="bg-gradient-to-r from-white to-primary-50 rounded-xl shadow-xl mb-8 overflow-hidden border-2 border-primary-200 group transform hover:-translate-y-1 transition duration-300" data-aos="fade-left">
+            <div class="bg-gradient-to-r from-white to-primary-50 rounded-xl shadow-xl mb-8 overflow-hidden border-2 border-primary-200 group transform hover:-translate-y-1 transition duration-300"
+                data-aos="fade-left">
                 <div class="flex flex-col md:flex-row">
                     <div class="md:w-2/3 p-8">
                         <div class="flex items-center mb-4">
-                            <span class="bg-primary-100 text-primary-800 text-sm font-semibold px-3 py-1 rounded-full">Nuevo Proyecto</span>
-                            <span class="ml-4 text-primary-500 text-sm"><i class="far fa-calendar mr-1"></i> Marzo 2024</span>
+                            <span
+                                class="bg-primary-100 text-primary-800 text-sm font-semibold px-3 py-1 rounded-full">Nuevo
+                                Proyecto</span>
+                            <span class="ml-4 text-primary-500 text-sm"><i class="far fa-calendar mr-1"></i> Marzo
+                                2024</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-primary-800 mt-2 mb-4 group-hover:text-primary-700 transition">
+                        <h3
+                            class="text-2xl font-bold text-primary-800 mt-2 mb-4 group-hover:text-primary-700 transition">
                             Desarrollo de Plataforma ODIN 2.0
                         </h3>
                         <p class="text-primary-600 mb-4">
-                            Lanzamiento de la nueva versión de nuestra plataforma de resolución de problemas educativos con mejoras en el procesamiento de lenguaje natural y experiencia de usuario.
+                            Lanzamiento de la nueva versión de nuestra plataforma de resolución de problemas educativos
+                            con mejoras en el procesamiento de lenguaje natural y experiencia de usuario.
                         </p>
                         <div class="flex items-center text-primary-700">
                             <i class="fas fa-users mr-2"></i>
@@ -704,26 +892,29 @@
                     </div>
                     <div class="md:w-1/3 relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-t from-primary-800/30 to-transparent z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Plataforma ODIN" class="w-full h-64 md:h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Plataforma ODIN"
+                            class="w-full h-64 md:h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
                 </div>
             </div>
-            
+
             <div class="text-center" data-aos="zoom-in">
-                <a href="#" class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition transform hover:-translate-y-1 inline-flex items-center group">
+                <a href="#"
+                    class="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition transform hover:-translate-y-1 inline-flex items-center group">
                     <i class="fas fa-book-open mr-2 group-hover:rotate-12 transition"></i>
                     Ver más Publicaciones
                 </a>
             </div>
         </div>
     </section>
-    
+
     <!-- INVESTIGADORES (animados) -->
     <section id="investigadores" class="py-20 bg-gradient-to-b from-white to-primary-50 relative overflow-hidden">
         <!-- Background elements -->
         <div class="absolute top-10 right-10 w-64 h-64 bg-primary-100 rounded-full opacity-50"></div>
         <div class="absolute bottom-10 left-10 w-96 h-96 bg-primary-50 rounded-full opacity-70"></div>
-        
+
         <div class="container mx-auto px-6 text-center relative z-10">
             <h2 class="text-4xl font-bold text-primary-800 mb-4" data-aos="zoom-in">
                 <i class="fas fa-microscope mr-3 text-primary-600"></i>Nuestros Investigadores
@@ -735,34 +926,49 @@
             <!-- Fundador y Subdirector -->
             <div class="grid md:grid-cols-2 gap-12 mb-16">
                 <!-- Fundador -->
-                <div class="bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine" data-aos="flip-left">
-                    <span class="bg-gradient-to-r from-primary-600 to-primary-700 text-white text-sm font-semibold px-4 py-2 rounded-full mb-4 shadow-md">
+                <div class="bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine"
+                    data-aos="flip-left">
+                    <span
+                        class="bg-gradient-to-r from-primary-600 to-primary-700 text-white text-sm font-semibold px-4 py-2 rounded-full mb-4 shadow-md">
                         <i class="fas fa-crown mr-2"></i>Fundador y Director
                     </span>
                     <div class="relative mb-6">
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300"></div>
-                        <img src="/img/FernandoMartinez.jpg" alt="Dr. Fernando Martinez" class="w-36 h-36 rounded-full mb-4 object-cover shadow-lg relative z-10 border-4 border-white">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300">
+                        </div>
+                        <img src="/img/FernandoMartinez.jpg" alt="Dr. Fernando Martinez"
+                            class="w-36 h-36 rounded-full mb-4 object-cover shadow-lg relative z-10 border-4 border-white">
                     </div>
-                    <h3 class="text-xl font-bold text-primary-800 group-hover:text-primary-700 transition">Dr. Fernando Martinez</h3>
+                    <h3 class="text-xl font-bold text-primary-800 group-hover:text-primary-700 transition">Dr. Fernando
+                        Martinez</h3>
                     <p class="text-primary-600 text-sm mb-6">Especialista en Inteligencia Artificial y Robótica</p>
-                    <a href="#" class="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-2 rounded-full font-semibold shadow-lg transition transform hover:-translate-y-1 flex items-center group">
+                    <a href="#"
+                        class="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-2 rounded-full font-semibold shadow-lg transition transform hover:-translate-y-1 flex items-center group">
                         <i class="fas fa-user-circle mr-2 group-hover:scale-110 transition"></i>
                         Ver perfil
                     </a>
-                </div> 
+                </div>
 
                 <!-- Subdirector -->
-                <div class="bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine" data-aos="flip-right">
-                    <span class="bg-gradient-to-r from-primary-600 to-primary-700 text-white text-sm font-semibold px-4 py-2 rounded-full mb-4 shadow-md">
+                <div class="bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine"
+                    data-aos="flip-right">
+                    <span
+                        class="bg-gradient-to-r from-primary-600 to-primary-700 text-white text-sm font-semibold px-4 py-2 rounded-full mb-4 shadow-md">
                         <i class="fas fa-user-tie mr-2"></i>Subdirector
                     </span>
                     <div class="relative mb-6">
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300"></div>
-                        <img src="/img/JaimePaez.png" alt="Ing. Jaime Paéz" class="w-36 h-36 rounded-full mb-4 object-cover shadow-lg relative z-10 border-4 border-white">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300">
+                        </div>
+                        <img src="/img/JaimePaez.png" alt="Ing. Jaime Paéz"
+                            class="w-36 h-36 rounded-full mb-4 object-cover shadow-lg relative z-10 border-4 border-white">
                     </div>
-                    <h3 class="text-xl font-bold text-primary-800 group-hover:text-primary-700 transition">Ing. Jaime Paéz</h3>
-                    <p class="text-primary-600 text-sm mb-6">Profesor de la Escuela Tecnológica Instituto Técnico Central</p>
-                    <a href="#" class="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-2 rounded-full font-semibold shadow-lg transition transform hover:-translate-y-1 flex items-center group">
+                    <h3 class="text-xl font-bold text-primary-800 group-hover:text-primary-700 transition">Ing. Jaime
+                        Paéz</h3>
+                    <p class="text-primary-600 text-sm mb-6">Profesor de la Escuela Tecnológica Instituto Técnico
+                        Central</p>
+                    <a href="#"
+                        class="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-2 rounded-full font-semibold shadow-lg transition transform hover:-translate-y-1 flex items-center group">
                         <i class="fas fa-user-circle mr-2 group-hover:scale-110 transition"></i>
                         Ver perfil
                     </a>
@@ -772,87 +978,403 @@
             <!-- Otros investigadores -->
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Investigador 1 -->
-                <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine" data-aos="zoom-in" data-aos-delay="100">
+                <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine"
+                    data-aos="zoom-in" data-aos-delay="100">
                     <div class="relative mb-4">
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300 opacity-70"></div>
-                        <img src="/img/ArmandoSolano.jpeg" alt="Lic. Armando Solano" class="w-28 h-28 rounded-full mb-4 object-cover shadow-md relative z-10 border-4 border-white">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300 opacity-70">
+                        </div>
+                        <img src="/img/ArmandoSolano.jpeg" alt="Lic. Armando Solano"
+                            class="w-28 h-28 rounded-full mb-4 object-cover shadow-md relative z-10 border-4 border-white">
                     </div>
-                    <h3 class="text-lg font-bold text-primary-800 group-hover:text-primary-700 transition">Lic. Armando Solano</h3>
-                    <p class="text-primary-600 text-xs mb-4">Profesor de la Escuela Tecnológica Instituto Técnico Central.</p>
-                    <a href="#" class="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow transition transform hover:-translate-y-1 flex items-center group">
+                    <h3 class="text-lg font-bold text-primary-800 group-hover:text-primary-700 transition">Lic. Armando
+                        Solano</h3>
+                    <p class="text-primary-600 text-xs mb-4">Profesor de la Escuela Tecnológica Instituto Técnico
+                        Central.</p>
+                    <a href="#"
+                        class="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow transition transform hover:-translate-y-1 flex items-center group">
                         <i class="fas fa-eye mr-1 text-xs"></i>
                         Ver más
                     </a>
                 </div>
 
                 <!-- Investigador 2 -->
-                <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine" data-aos="zoom-in" data-aos-delay="150">
+                <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine"
+                    data-aos="zoom-in" data-aos-delay="150">
                     <div class="relative mb-4">
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300 opacity-70"></div>
-                        <img src="/img/EduardoHernandez.jpeg" alt="Ing. Eduardo Hernandez" class="w-28 h-28 rounded-full mb-4 object-cover shadow-md relative z-10 border-4 border-white">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300 opacity-70">
+                        </div>
+                        <img src="/img/EduardoHernandez.jpeg" alt="Ing. Eduardo Hernandez"
+                            class="w-28 h-28 rounded-full mb-4 object-cover shadow-md relative z-10 border-4 border-white">
                     </div>
-                    <h3 class="text-lg font-bold text-primary-800 group-hover:text-primary-700 transition">Ing. Eduardo Hernandez</h3>
+                    <h3 class="text-lg font-bold text-primary-800 group-hover:text-primary-700 transition">Ing. Eduardo
+                        Hernandez</h3>
                     <p class="text-primary-600 text-xs mb-4">Administrativo de planta Universidad Distrital</p>
-                    <a href="#" class="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow transition transform hover:-translate-y-1 flex items-center group">
+                    <a href="#"
+                        class="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow transition transform hover:-translate-y-1 flex items-center group">
                         <i class="fas fa-eye mr-1 text-xs"></i>
                         Ver más
                     </a>
                 </div>
 
                 <!-- Investigador 3 -->
-                <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine" data-aos="zoom-in" data-aos-delay="200">
+                <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine"
+                    data-aos="zoom-in" data-aos-delay="200">
                     <div class="relative mb-4">
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300 opacity-70"></div>
-                        <img src="/img/LuisGonzales.png" alt="Lic. Luis Alberto Garcia Gonzalez" class="w-28 h-28 rounded-full mb-4 object-cover shadow-md relative z-10 border-4 border-white">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300 opacity-70">
+                        </div>
+                        <img src="/img/LuisGonzales.png" alt="Lic. Luis Alberto Garcia Gonzalez"
+                            class="w-28 h-28 rounded-full mb-4 object-cover shadow-md relative z-10 border-4 border-white">
                     </div>
-                    <h3 class="text-lg font-bold text-primary-800 group-hover:text-primary-700 transition">Lic. Luis Alberto Garcia Gonzalez</h3>
+                    <h3 class="text-lg font-bold text-primary-800 group-hover:text-primary-700 transition">Lic. Luis
+                        Alberto Garcia Gonzalez</h3>
                     <p class="text-primary-600 text-xs mb-4">Docente de cátedra</p>
-                    <a href="#" class="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow transition transform hover:-translate-y-1 flex items-center group">
+                    <a href="#"
+                        class="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow transition transform hover:-translate-y-1 flex items-center group">
                         <i class="fas fa-eye mr-1 text-xs"></i>
                         Ver más
                     </a>
                 </div>
 
                 <!-- Investigador 4 -->
-                <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine" data-aos="zoom-in" data-aos-delay="250">
+                <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine"
+                    data-aos="zoom-in" data-aos-delay="250">
                     <div class="relative mb-4">
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300 opacity-70"></div>
-                        <img src="/img/AndreaGarcia.jpg" alt="Ing. Andrea Garcia Rivas" class="w-28 h-28 rounded-full mb-4 object-cover shadow-md relative z-10 border-4 border-white">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300 opacity-70">
+                        </div>
+                        <img src="/img/AndreaGarcia.jpg" alt="Ing. Andrea Garcia Rivas"
+                            class="w-28 h-28 rounded-full mb-4 object-cover shadow-md relative z-10 border-4 border-white">
                     </div>
-                    <h3 class="text-lg font-bold text-primary-800 group-hover:text-primary-700 transition">Ing. Andrea Garcia Rivas</h3>
+                    <h3 class="text-lg font-bold text-primary-800 group-hover:text-primary-700 transition">Ing. Andrea
+                        Garcia Rivas</h3>
                     <p class="text-primary-600 text-xs mb-4">Docente de planta</p>
-                    <a href="#" class="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow transition transform hover:-translate-y-1 flex items-center group">
+                    <a href="#"
+                        class="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow transition transform hover:-translate-y-1 flex items-center group">
                         <i class="fas fa-eye mr-1 text-xs"></i>
                         Ver más
                     </a>
                 </div>
 
                 <!-- Investigador 5 -->
-                <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine" data-aos="zoom-in" data-aos-delay="300">
+                <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine"
+                    data-aos="zoom-in" data-aos-delay="300">
                     <div class="relative mb-4">
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300 opacity-70"></div>
-                        <img src="/img/KarenGarcia.jpg" alt="Dr. Karen Patricia Gaitán de los Ríosz" class="w-28 h-28 rounded-full mb-4 object-cover shadow-md relative z-10 border-4 border-white">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300 opacity-70">
+                        </div>
+                        <img src="/img/KarenGarcia.jpg" alt="Dr. Karen Patricia Gaitán de los Ríosz"
+                            class="w-28 h-28 rounded-full mb-4 object-cover shadow-md relative z-10 border-4 border-white">
                     </div>
-                    <h3 class="text-lg font-bold text-primary-800 group-hover:text-primary-700 transition">Dr. Karen Patricia Gaitán de los Ríos</h3>
-                    <p class="text-primary-600 text-xs mb-4">Doctora con énfasis en Física de la Atmósfera y Física Computacional</p>
-                    <a href="#" class="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow transition transform hover:-translate-y-1 flex items-center group">
+                    <h3 class="text-lg font-bold text-primary-800 group-hover:text-primary-700 transition">Dr. Karen
+                        Patricia Gaitán de los Ríos</h3>
+                    <p class="text-primary-600 text-xs mb-4">Doctora con énfasis en Física de la Atmósfera y Física
+                        Computacional</p>
+                    <a href="#"
+                        class="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow transition transform hover:-translate-y-1 flex items-center group">
                         <i class="fas fa-eye mr-1 text-xs"></i>
                         Ver más
                     </a>
                 </div>
 
                 <!-- Investigador 6 -->
-                <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine" data-aos="zoom-in" data-aos-delay="350">
+                <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center border-2 border-primary-200 transform transition duration-300 hover:scale-105 hover:shadow-2xl group shine"
+                    data-aos="zoom-in" data-aos-delay="350">
                     <div class="relative mb-4">
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300 opacity-70"></div>
-                        <img src="/img/JuanLeal.jpg" alt="Juan David Leal Campuzano" class="w-28 h-28 rounded-full mb-4 object-cover shadow-md relative z-10 border-4 border-white">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur group-hover:blur-xl transition duration-300 opacity-70">
+                        </div>
+                        <img src="/img/JuanLeal.jpg" alt="Juan David Leal Campuzano"
+                            class="w-28 h-28 rounded-full mb-4 object-cover shadow-md relative z-10 border-4 border-white">
                     </div>
-                    <h3 class="text-lg font-bold text-primary-800 group-hover:text-primary-700 transition">Juan David Leal Campuzano</h3>
-                    <p class="text-primary-600 text-xs mb-4">Matemático egresado de la Universidad Distrital Francisco José de Caldas</p>
-                    <a href="#" class="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow transition transform hover:-translate-y-1 flex items-center group">
+                    <h3 class="text-lg font-bold text-primary-800 group-hover:text-primary-700 transition">Juan David
+                        Leal Campuzano</h3>
+                    <p class="text-primary-600 text-xs mb-4">Matemático egresado de la Universidad Distrital Francisco
+                        José de Caldas</p>
+                    <a href="#"
+                        class="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow transition transform hover:-translate-y-1 flex items-center group">
                         <i class="fas fa-eye mr-1 text-xs"></i>
                         Ver más
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historia Section -->
+    <section id="historia" class="py-20 bg-background-cream relative overflow-hidden">
+        <!-- Background decoration -->
+        <div
+            class="absolute top-0 right-0 w-64 h-64 bg-primary-50 rounded-full opacity-50 translate-x-1/3 -translate-y-1/3">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full opacity-50 -translate-x-1/3 translate-y-1/3">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-primary-800 mb-8" data-aos="zoom-in">
+                <i class="fas fa-hourglass-half mr-3 text-primary-600"></i>Nuestra Historia
+            </h2>
+            <p class="text-center text-primary-600 max-w-4xl mx-auto mb-20 text-lg leading-relaxed" data-aos="fade-up"
+                data-aos-delay="100">
+                Un recorrido por los momentos más significativos en la evolución del Grupo VIRTUS,
+                desde sus inicios hasta convertirse en un referente en investigación de ambientes virtuales de
+                aprendizaje.
+            </p>
+
+            <!-- Timeline -->
+            <div class="timeline-container relative max-w-5xl mx-auto py-8">
+                <!-- Línea central -->
+                <div class="timeline-line hidden md:block"></div>
+                <div class="timeline-line md:hidden"></div>
+
+                <!-- 2007 -->
+                <div class="timeline-year" data-aos="fade-down">
+                    <div class="timeline-year-badge">2007</div>
+                </div>
+
+                <!-- Enero 2007 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="md:text-right md:pr-16" data-aos="fade-right">
+                            <div
+                                class="bg-white rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl group shine">
+                                <span
+                                    class="inline-block bg-primary-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Enero</span>
+                                <h3
+                                    class="text-xl font-bold text-primary-800 mb-3 group-hover:text-primary-700 transition">
+                                    🚀 El Origen</h3>
+                                <p class="text-primary-600 text-sm leading-relaxed">
+                                    El Ing. Fernando Martínez Rodríguez vislumbra la necesidad de generar un proyecto de
+                                    investigación en
+                                    "Herramientas virtuales de aprendizaje", después de que la ETITC capacitara docentes
+                                    mediante un Diplomado
+                                    como Tutores Virtuales en la UNAB.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+                </div>
+
+                <!-- Agosto 2007 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="hidden md:block"></div>
+                        <div class="md:pl-16" data-aos="fade-left">
+                            <div
+                                class="bg-white rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl group shine">
+                                <span
+                                    class="inline-block bg-primary-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Agosto</span>
+                                <h3
+                                    class="text-xl font-bold text-primary-800 mb-3 group-hover:text-primary-700 transition">
+                                    🌟 Nacimiento de VIRTUS</h3>
+                                <p class="text-primary-600 text-sm leading-relaxed">
+                                    Se conforma oficialmente el grupo de investigación con 8 participantes del primer
+                                    Diplomado.
+                                    El nombre "VIRTUS" es propuesto por el Ing. Hernán Darío Cortés y aprobado por el
+                                    grupo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2008 -->
+                <div class="timeline-year" data-aos="fade-down">
+                    <div class="timeline-year-badge">2008</div>
+                </div>
+
+                <!-- Junio 2008 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="md:text-right md:pr-16" data-aos="fade-right">
+                            <div
+                                class="bg-white rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl group shine">
+                                <span
+                                    class="inline-block bg-primary-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Junio</span>
+                                <h3
+                                    class="text-xl font-bold text-primary-800 mb-3 group-hover:text-primary-700 transition">
+                                    🤝 Vinculación Universidad Distrital</h3>
+                                <p class="text-primary-600 text-sm leading-relaxed">
+                                    El director y fundador gana un concurso en la Universidad Distrital, fortaleciendo
+                                    los lazos
+                                    interinstitucionales mientras continúa liderando el grupo.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+                </div>
+
+                <!-- 2010 -->
+                <div class="timeline-year" data-aos="fade-down">
+                    <div class="timeline-year-badge">2010</div>
+                </div>
+
+                <!-- Agosto 2010 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="hidden md:block"></div>
+                        <div class="md:pl-16" data-aos="fade-left">
+                            <div
+                                class="bg-white rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl group shine">
+                                <span
+                                    class="inline-block bg-primary-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Agosto</span>
+                                <h3
+                                    class="text-xl font-bold text-primary-800 mb-3 group-hover:text-primary-700 transition">
+                                    🏆 Reconocimiento Colciencias</h3>
+                                <p class="text-primary-600 text-sm leading-relaxed">
+                                    VIRTUS obtiene el reconocimiento por parte de Colciencias como Grupo de
+                                    Investigación
+                                    y es categorizado en categoría D. Un hito fundamental en la consolidación del grupo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2013 -->
+                <div class="timeline-year" data-aos="fade-down">
+                    <div class="timeline-year-badge">2013</div>
+                </div>
+
+                <!-- Octubre 2013 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="md:text-right md:pr-16" data-aos="fade-right">
+                            <div
+                                class="bg-white rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl group shine">
+                                <span
+                                    class="inline-block bg-primary-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Octubre</span>
+                                <h3
+                                    class="text-xl font-bold text-primary-800 mb-3 group-hover:text-primary-700 transition">
+                                    🔗 Grupo Interinstitucional</h3>
+                                <p class="text-primary-600 text-sm leading-relaxed">
+                                    VIRTUS se convierte oficialmente en un Grupo de Investigación Interinstitucional,
+                                    perteneciendo a la ETITC y a la Universidad Distrital Francisco José de Caldas.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+                </div>
+
+                <!-- 2016 -->
+                <div class="timeline-year" data-aos="fade-down">
+                    <div class="timeline-year-badge">2016</div>
+                </div>
+
+                <!-- Mayo 2016 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="hidden md:block"></div>
+                        <div class="md:pl-16" data-aos="fade-left">
+                            <div
+                                class="bg-white rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl group shine">
+                                <span
+                                    class="inline-block bg-primary-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Mayo</span>
+                                <h3
+                                    class="text-xl font-bold text-primary-800 mb-3 group-hover:text-primary-700 transition">
+                                    📈 Ascenso a Categoría C</h3>
+                                <p class="text-primary-600 text-sm leading-relaxed">
+                                    Resultados de la convocatoria 737 de 2015: VIRTUS asciende a categoría C de
+                                    Colciencias,
+                                    reconociendo la calidad y producción científica del grupo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2017 -->
+                <div class="timeline-year" data-aos="fade-down">
+                    <div class="timeline-year-badge">2017</div>
+                </div>
+
+                <!-- Diciembre 2017 -->
+                <div class="timeline-item mb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="md:text-right md:pr-16" data-aos="fade-right">
+                            <div
+                                class="bg-white rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl group shine">
+                                <span
+                                    class="inline-block bg-primary-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Diciembre</span>
+                                <h3
+                                    class="text-xl font-bold text-primary-800 mb-3 group-hover:text-primary-700 transition">
+                                    ✅ Confirmación Categoría C</h3>
+                                <p class="text-primary-600 text-sm leading-relaxed">
+                                    En la convocatoria 781 de 2017, VIRTUS confirma su categoría C, consolidándose como
+                                    un grupo
+                                    de investigación de alta calidad con impacto nacional.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+                </div>
+
+                <!-- Presente -->
+                <div class="timeline-year" data-aos="fade-down">
+                    <div class="timeline-year-badge">Hoy</div>
+                </div>
+
+                <!-- Actualidad -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content md:grid md:grid-cols-2 md:gap-16">
+                        <div class="hidden md:block"></div>
+                        <div class="md:pl-16" data-aos="fade-left">
+                            <div
+                                class="bg-white rounded-xl shadow-lg p-6 border-2 border-primary-light transform transition hover:scale-105 hover:shadow-xl group shine">
+                                <span
+                                    class="inline-block bg-primary-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Actualidad</span>
+                                <h3
+                                    class="text-xl font-bold text-primary-800 mb-3 group-hover:text-primary-700 transition">
+                                    🔬 Investigación Activa</h3>
+                                <p class="text-primary-600 text-sm leading-relaxed">
+                                    El grupo continúa trabajando en sus seis líneas de investigación: Ambientes y
+                                    Herramientas Virtuales de Aprendizaje,
+                                    Tecnología Educativa, Sistemas Adaptativos y Recomendadores, Gamificación y
+                                    Videojuegos,
+                                    Ingeniería Web, y Gestión del Conocimiento Organizacional.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estadísticas -->
+            <div class="mt-24 grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div class="bg-primary-600 rounded-xl p-6 text-center shadow-lg transform transition hover:scale-105"
+                    data-aos="zoom-in" data-aos-delay="0">
+                    <div class="text-5xl font-bold text-white mb-2">18+</div>
+                    <div class="text-white text-sm font-semibold">Años de Historia</div>
+                </div>
+                <div class="bg-primary-600 rounded-xl p-6 text-center shadow-lg transform transition hover:scale-105"
+                    data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-5xl font-bold text-white mb-2">6</div>
+                    <div class="text-white text-sm font-semibold">Líneas de Investigación</div>
+                </div>
+                <div class="bg-primary-600 rounded-xl p-6 text-center shadow-lg transform transition hover:scale-105"
+                    data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-5xl font-bold text-white mb-2">80+</div>
+                    <div class="text-white text-sm font-semibold">Docentes Capacitados</div>
+                </div>
+                <div class="bg-primary-600 rounded-xl p-6 text-center shadow-lg transform transition hover:scale-105"
+                    data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-5xl font-bold text-white mb-2">2</div>
+                    <div class="text-white text-sm font-semibold">Instituciones Aliadas</div>
                 </div>
             </div>
         </div>
@@ -862,9 +1384,13 @@
     <section id="filosofia" class="py-20 bg-gradient-to-b from-primary-50 to-white relative overflow-hidden">
         <!-- Background pattern -->
         <div class="absolute inset-0 opacity-5">
-            <div class="absolute top-0 left-0 w-full h-full" style="background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%2316a34a" fill-opacity="0.4" fill-rule="evenodd"/%3E%3C/svg%3E');"></div>
+            <div class="absolute top-0 left-0 w-full h-full"
+                style="background-image: url('data:image/svg+xml,%3Csvg width=" 100" height="100" viewBox="0 0 100 100"
+                xmlns="http://www.w3.org/2000/svg" %3E%3Cpath
+                d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z"
+                fill="%2316a34a" fill-opacity="0.4" fill-rule="evenodd" /%3E%3C/svg%3E');"></div>
         </div>
-        
+
         <div class="container mx-auto px-6 relative z-10">
             <h2 class="text-4xl font-bold text-center text-primary-800 mb-4" data-aos="zoom-in">
                 <i class="fas fa-lightbulb mr-3 text-primary-600"></i>Filosofía
@@ -875,10 +1401,14 @@
 
             <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
                 <!-- Misión -->
-                <div class="bg-white rounded-2xl shadow-xl p-6 text-center transform transition duration-300 hover:-translate-y-2 group shine" data-aos="fade-up">
+                <div class="bg-white rounded-2xl shadow-xl p-6 text-center transform transition duration-300 hover:-translate-y-2 group shine"
+                    data-aos="fade-up">
                     <div class="relative mb-6">
-                        <div class="absolute inset-0 bg-primary-500 rounded-2xl blur group-hover:blur-xl transition duration-300 opacity-20"></div>
-                        <div class="bg-gradient-to-br from-primary-100 to-primary-50 w-40 h-40 rounded-full mx-auto flex items-center justify-center relative z-10">
+                        <div
+                            class="absolute inset-0 bg-primary-500 rounded-2xl blur group-hover:blur-xl transition duration-300 opacity-20">
+                        </div>
+                        <div
+                            class="bg-gradient-to-br from-primary-100 to-primary-50 w-40 h-40 rounded-full mx-auto flex items-center justify-center relative z-10">
                             <i class="fas fa-bullseye text-6xl text-primary-600"></i>
                         </div>
                     </div>
@@ -891,10 +1421,14 @@
                 </div>
 
                 <!-- Visión -->
-                <div class="bg-white rounded-2xl shadow-xl p-6 text-center transform transition duration-300 hover:-translate-y-2 group shine" data-aos="fade-up" data-aos-delay="150">
+                <div class="bg-white rounded-2xl shadow-xl p-6 text-center transform transition duration-300 hover:-translate-y-2 group shine"
+                    data-aos="fade-up" data-aos-delay="150">
                     <div class="relative mb-6">
-                        <div class="absolute inset-0 bg-primary-500 rounded-2xl blur group-hover:blur-xl transition duration-300 opacity-20"></div>
-                        <div class="bg-gradient-to-br from-primary-100 to-primary-50 w-40 h-40 rounded-full mx-auto flex items-center justify-center relative z-10">
+                        <div
+                            class="absolute inset-0 bg-primary-500 rounded-2xl blur group-hover:blur-xl transition duration-300 opacity-20">
+                        </div>
+                        <div
+                            class="bg-gradient-to-br from-primary-100 to-primary-50 w-40 h-40 rounded-full mx-auto flex items-center justify-center relative z-10">
                             <i class="fas fa-eye text-6xl text-primary-600"></i>
                         </div>
                     </div>
@@ -908,10 +1442,14 @@
                 </div>
 
                 <!-- Línea de Investigación -->
-                <div class="bg-white rounded-2xl shadow-xl p-6 text-center transform transition duration-300 hover:-translate-y-2 group shine" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white rounded-2xl shadow-xl p-6 text-center transform transition duration-300 hover:-translate-y-2 group shine"
+                    data-aos="fade-up" data-aos-delay="200">
                     <div class="relative mb-6">
-                        <div class="absolute inset-0 bg-primary-500 rounded-2xl blur group-hover:blur-xl transition duration-300 opacity-20"></div>
-                        <div class="bg-gradient-to-br from-primary-100 to-primary-50 w-40 h-40 rounded-full mx-auto flex items-center justify-center relative z-10">
+                        <div
+                            class="absolute inset-0 bg-primary-500 rounded-2xl blur group-hover:blur-xl transition duration-300 opacity-20">
+                        </div>
+                        <div
+                            class="bg-gradient-to-br from-primary-100 to-primary-50 w-40 h-40 rounded-full mx-auto flex items-center justify-center relative z-10">
                             <i class="fas fa-chart-line text-6xl text-primary-600"></i>
                         </div>
                     </div>
@@ -937,12 +1475,16 @@
                 Conoce la historia y significado detrás del nombre Virtus
             </p>
 
-            <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl p-8 grid md:grid-cols-3 gap-8 transform transition duration-300 hover:shadow-2xl shine" data-aos="fade-up">
+            <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl p-8 grid md:grid-cols-3 gap-8 transform transition duration-300 hover:shadow-2xl shine"
+                data-aos="fade-up">
                 <!-- IMAGEN LOGO -->
                 <div class="flex flex-col items-center justify-center">
                     <div class="relative mb-6">
-                        <div class="absolute inset-0 bg-primary-500 rounded-2xl blur group-hover:blur-xl transition duration-300 opacity-20"></div>
-                        <div class="bg-gradient-to-br from-primary-100 to-primary-50 w-48 h-48 rounded-full flex items-center justify-center relative z-10 p-6">
+                        <div
+                            class="absolute inset-0 bg-primary-500 rounded-2xl blur group-hover:blur-xl transition duration-300 opacity-20">
+                        </div>
+                        <div
+                            class="bg-gradient-to-br from-primary-100 to-primary-50 w-48 h-48 rounded-full flex items-center justify-center relative z-10 p-6">
                             <img src="img/logo_virtus.jpg" alt="Logo Virtus" class="w-full h-auto">
                         </div>
                     </div>
@@ -957,7 +1499,8 @@
                             Autor del Nombre
                         </h4>
                         <p class="text-primary-700 text-sm leading-relaxed">
-                            <strong>Ing. Hernán Darío Cortés.</strong> (Miembro Fundador. Subdirector del Grupo 2007 - 2012)  
+                            <strong>Ing. Hernán Darío Cortés.</strong> (Miembro Fundador. Subdirector del Grupo 2007 -
+                            2012)
                             Docente de Planta de la Escuela Tecnológica Instituto Técnico Central.
                         </p>
                     </div>
@@ -994,17 +1537,19 @@
                         </h4>
                         <p class="text-primary-700 text-sm leading-relaxed mb-3">
                             Virtus es una palabra latina, idioma que tiene sonoridad y a él recurren con
-                            frecuencia la ciencia y la educación para expresar sus conceptos.  
-                            El grupo Virtus tiene en su misión la investigación en educación. La palabra Virtus es corta,
+                            frecuencia la ciencia y la educación para expresar sus conceptos.
+                            El grupo Virtus tiene en su misión la investigación en educación. La palabra Virtus es
+                            corta,
                             fácil de escribir, fácil de pronunciar y fácil de transcribir.
                         </p>
                         <p class="text-primary-700 text-sm leading-relaxed mb-3">
-                            Virtus es la raíz latina de virtual, el término español que hace parte de la misión del grupo:
+                            Virtus es la raíz latina de virtual, el término español que hace parte de la misión del
+                            grupo:
                             el estudio sobre las herramientas virtuales que se usan en educación.
                         </p>
                         <p class="text-primary-700 text-sm leading-relaxed font-semibold">
                             <i class="fas fa-quote-left text-primary-500 mr-2"></i>
-                            Virtus hace parte del lema del Instituto Técnico Central - Escuela Tecnológica:  
+                            Virtus hace parte del lema del Instituto Técnico Central - Escuela Tecnológica:
                             <span class="text-primary-800 italic">UBI LABOR IBI VIRTUS.</span>
                             <i class="fas fa-quote-right text-primary-500 ml-2"></i>
                         </p>
@@ -1014,19 +1559,21 @@
         </div>
     </section>
 
-  <!-- OBJETIVOS -->
+    <!-- OBJETIVOS -->
     <section id="objetivos" class="py-20 bg-gradient-to-b from-primary-50 to-white relative overflow-hidden">
         <div class="container mx-auto px-6 relative z-10">
             <h2 class="text-4xl font-bold text-center text-primary-800 mb-4" data-aos="zoom-in">
                 <i class="fas fa-bullseye mr-3 text-primary-600"></i>Objetivos
             </h2>
-            <p class="text-center text-secondary-700 font-semibold max-w-4xl mx-auto mb-10 text-lg" data-aos="fade-up" data-aos-delay="100">
-                Investigar en el uso, apropiación y aplicación: de las Tecnologías de la Información, 
+            <p class="text-center text-secondary-700 font-semibold max-w-4xl mx-auto mb-10 text-lg" data-aos="fade-up"
+                data-aos-delay="100">
+                Investigar en el uso, apropiación y aplicación: de las Tecnologías de la Información,
                 la Comunicación y el Conocimiento: TICC, en educación y la empresa.
             </p>
 
             <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-                <div class="bg-white rounded-2xl shadow-xl p-8 transform transition duration-300 hover:-translate-y-2 shine" data-aos="fade-right">
+                <div class="bg-white rounded-2xl shadow-xl p-8 transform transition duration-300 hover:-translate-y-2 shine"
+                    data-aos="fade-right">
                     <div class="flex items-center mb-6">
                         <div class="bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl p-3 mr-3 shadow-md">
                             <i class="fas fa-list-check text-white text-xl"></i>
@@ -1035,51 +1582,64 @@
                     </div>
                     <ul class="space-y-4 text-primary-700 text-sm leading-relaxed">
                         <li class="flex items-start p-3 bg-primary-50 rounded-lg hover:bg-primary-100 transition">
-                            <span class="bg-primary-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">1</span>
+                            <span
+                                class="bg-primary-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">1</span>
                             <span>Analizar la incidencia de la educación virtual en la enseñanza superior.</span>
                         </li>
                         <li class="flex items-start p-3 bg-primary-50 rounded-lg hover:bg-primary-100 transition">
-                            <span class="bg-primary-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2</span>
+                            <span
+                                class="bg-primary-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2</span>
                             <span>Reflexionar en torno a la educación virtual en la educación Superior.</span>
                         </li>
                         <li class="flex items-start p-3 bg-primary-50 rounded-lg hover:bg-primary-100 transition">
-                            <span class="bg-primary-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3</span>
-                            <span>Desarrollar material didáctico para ambientes y herramientas Virtuales de Aprendizaje.</span>
+                            <span
+                                class="bg-primary-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3</span>
+                            <span>Desarrollar material didáctico para ambientes y herramientas Virtuales de
+                                Aprendizaje.</span>
                         </li>
                         <li class="flex items-start p-3 bg-primary-50 rounded-lg hover:bg-primary-100 transition">
-                            <span class="bg-primary-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4</span>
-                            <span>Diseñar Cursos virtuales como apoyo a la presencialidad en la educación Técnica y Tecnológica.</span>
+                            <span
+                                class="bg-primary-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4</span>
+                            <span>Diseñar Cursos virtuales como apoyo a la presencialidad en la educación Técnica y
+                                Tecnológica.</span>
                         </li>
                         <li class="flex items-start p-3 bg-primary-50 rounded-lg hover:bg-primary-100 transition">
-                            <span class="bg-primary-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">5</span>
-                            <span>Contribuir al desarrollo de los docentes de educación superior frente a las competencias pedagógicas apoyadas con las TIC.</span>
+                            <span
+                                class="bg-primary-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">5</span>
+                            <span>Contribuir al desarrollo de los docentes de educación superior frente a las
+                                competencias pedagógicas apoyadas con las TIC.</span>
                         </li>
                     </ul>
                 </div>
 
                 <div class="flex flex-col items-center" data-aos="fade-left">
                     <div class="relative mb-8">
-                        <div class="absolute inset-0 bg-primary-500 rounded-full blur-xl opacity-30 animate-pulse-slow"></div>
-                        <div class="bg-gradient-to-br from-primary-100 to-primary-50 w-64 h-64 rounded-full flex items-center justify-center relative z-10 p-8 overflow-hidden">
-                        
-                            <img src="objetivos.png" alt="Enfoque estratégico" class="w-full h-full object-cover rounded-full">
+                        <div class="absolute inset-0 bg-primary-500 rounded-full blur-xl opacity-30 animate-pulse-slow">
+                        </div>
+                        <div
+                            class="bg-gradient-to-br from-primary-100 to-primary-50 w-64 h-64 rounded-full flex items-center justify-center relative z-10 p-8 overflow-hidden">
+
+                            <img src="objetivos.png" alt="Enfoque estratégico"
+                                class="w-full h-full object-cover rounded-full">
                         </div>
                     </div>
                     <div class="text-center">
                         <h3 class="font-bold text-primary-800 text-xl mb-3">Enfoque Estratégico</h3>
                         <p class="text-primary-600 text-sm leading-relaxed max-w-md">
-                            Nuestros objetivos están alineados con la transformación digital educativa, 
+                            Nuestros objetivos están alineados con la transformación digital educativa,
                             buscando siempre la innovación y la excelencia en la investigación aplicada.
                         </p>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Objetivos adicionales en cards -->
             <div class="grid md:grid-cols-3 gap-6 mt-12">
-                <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-300 hover:-translate-y-2 border-t-4 border-primary-500" data-aos="zoom-in" data-aos-delay="100">
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-300 hover:-translate-y-2 border-t-4 border-primary-500"
+                    data-aos="zoom-in" data-aos-delay="100">
                     <div class="text-center mb-4">
-                        <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <div
+                            class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
                             <i class="fas fa-lightbulb text-2xl text-primary-600"></i>
                         </div>
                         <h4 class="font-bold text-primary-800">Innovación</h4>
@@ -1088,10 +1648,12 @@
                         Promover la innovación en metodologías educativas mediante el uso de TICC.
                     </p>
                 </div>
-                
-                <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-300 hover:-translate-y-2 border-t-4 border-primary-500" data-aos="zoom-in" data-aos-delay="150">
+
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-300 hover:-translate-y-2 border-t-4 border-primary-500"
+                    data-aos="zoom-in" data-aos-delay="150">
                     <div class="text-center mb-4">
-                        <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <div
+                            class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
                             <i class="fas fa-handshake text-2xl text-primary-600"></i>
                         </div>
                         <h4 class="font-bold text-primary-800">Colaboración</h4>
@@ -1100,10 +1662,12 @@
                         Fomentar la colaboración interinstitucional para el desarrollo de proyectos conjuntos.
                     </p>
                 </div>
-                
-                <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-300 hover:-translate-y-2 border-t-4 border-primary-500" data-aos="zoom-in" data-aos-delay="200">
+
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-300 hover:-translate-y-2 border-t-4 border-primary-500"
+                    data-aos="zoom-in" data-aos-delay="200">
                     <div class="text-center mb-4">
-                        <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <div
+                            class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
                             <i class="fas fa-chart-line text-2xl text-primary-600"></i>
                         </div>
                         <h4 class="font-bold text-primary-800">Impacto</h4>
@@ -1120,9 +1684,13 @@
     <footer id="contacto" class="bg-footer-800 text-white py-12 relative overflow-hidden">
         <!-- Footer background pattern -->
         <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 left-0 w-full h-full" style="background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%23ffffff" fill-opacity="0.4" fill-rule="evenodd"/%3E%3C/svg%3E');"></div>
+            <div class="absolute top-0 left-0 w-full h-full"
+                style="background-image: url('data:image/svg+xml,%3Csvg width=" 100" height="100" viewBox="0 0 100 100"
+                xmlns="http://www.w3.org/2000/svg" %3E%3Cpath
+                d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z"
+                fill="%23ffffff" fill-opacity="0.4" fill-rule="evenodd" /%3E%3C/svg%3E');"></div>
         </div>
-        
+
         <div class="container mx-auto px-6 relative z-10">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <!-- Grupo Virtus -->
@@ -1134,7 +1702,8 @@
                         <h4 class="font-bold text-xl text-white">Grupo Virtus</h4>
                     </div>
                     <p class="text-footer-text text-sm leading-relaxed mb-4">
-                        Grupo de investigación interinstitucional con la innovación en tecnología educativa y el desarrollo de soluciones tecnológicas para mejoras de organizaciones.
+                        Grupo de investigación interinstitucional con la innovación en tecnología educativa y el
+                        desarrollo de soluciones tecnológicas para mejoras de organizaciones.
                     </p>
                     <div class="space-y-2">
                         <p class="text-sm text-footer-text flex items-center">
@@ -1151,7 +1720,7 @@
                         </p>
                     </div>
                 </div>
-                
+
                 <!-- Líneas de Investigación -->
                 <div>
                     <h4 class="font-bold text-lg mb-4 text-white flex items-center">
@@ -1177,7 +1746,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
                 <!-- El Grupo -->
                 <div>
                     <h4 class="font-bold text-lg mb-4 text-white flex items-center">
@@ -1203,7 +1772,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
                 <!-- Recursos -->
                 <div>
                     <h4 class="font-bold text-lg mb-4 text-white flex items-center">
@@ -1230,7 +1799,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <!-- Redes Sociales -->
             <div class="pt-8 flex flex-col md:flex-row justify-between items-center border-t border-footer-border">
                 <p class="text-sm text-footer-text mb-4 md:mb-0 text-center md:text-left">
@@ -1238,32 +1807,45 @@
                     2025 Grupo Virtus - Universidad Distrital Francisco José de Caldas. Todos los derechos reservados.
                 </p>
                 <div class="flex space-x-6">
-                    <a href="https://www.instagram.com/virtus.investigacion/?hl=en" class="text-white hover:text-primary-300 transition transform hover:-translate-y-1" title="Instagram">
-                        <div class="bg-footer-700 hover:bg-primary-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                    <a href="https://www.instagram.com/virtus.investigacion/?hl=en"
+                        class="text-white hover:text-primary-300 transition transform hover:-translate-y-1"
+                        title="Instagram">
+                        <div
+                            class="bg-footer-700 hover:bg-primary-600 w-10 h-10 rounded-full flex items-center justify-center transition">
                             <i class="fab fa-instagram"></i>
                         </div>
                     </a>
-                    <a href="https://www.linkedin.com/company/investigacion-virtus/" class="text-white hover:text-primary-300 transition transform hover:-translate-y-1" title="LinkedIn">
-                        <div class="bg-footer-700 hover:bg-primary-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                    <a href="https://www.linkedin.com/company/investigacion-virtus/"
+                        class="text-white hover:text-primary-300 transition transform hover:-translate-y-1"
+                        title="LinkedIn">
+                        <div
+                            class="bg-footer-700 hover:bg-primary-600 w-10 h-10 rounded-full flex items-center justify-center transition">
                             <i class="fab fa-linkedin-in"></i>
                         </div>
                     </a>
-                    <a href="https://www.facebook.com/people/Grupo-de-investigaci%C3%B3n-Virtus/61581396227191/?sk=about" class="text-white hover:text-primary-300 transition transform hover:-translate-y-1" title="Facebook">
-                        <div class="bg-footer-700 hover:bg-primary-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                    <a href="https://www.facebook.com/people/Grupo-de-investigaci%C3%B3n-Virtus/61581396227191/?sk=about"
+                        class="text-white hover:text-primary-300 transition transform hover:-translate-y-1"
+                        title="Facebook">
+                        <div
+                            class="bg-footer-700 hover:bg-primary-600 w-10 h-10 rounded-full flex items-center justify-center transition">
                             <i class="fab fa-facebook-f"></i>
                         </div>
                     </a>
-                    <a href="mailto:investigacion@virtus.edu" class="text-white hover:text-primary-300 transition transform hover:-translate-y-1" title="Email">
-                        <div class="bg-footer-700 hover:bg-primary-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                    <a href="mailto:investigacion@virtus.edu"
+                        class="text-white hover:text-primary-300 transition transform hover:-translate-y-1"
+                        title="Email">
+                        <div
+                            class="bg-footer-700 hover:bg-primary-600 w-10 h-10 rounded-full flex items-center justify-center transition">
                             <i class="fas fa-envelope"></i>
                         </div>
                     </a>
                 </div>
             </div>
-            
+
             <!-- Back to top button -->
             <div class="text-center mt-8">
-                <a href="#inicio" class="text-footer-text hover:text-white transition inline-flex items-center group" id="backToTop">
+                <a href="#inicio" class="text-footer-text hover:text-white transition inline-flex items-center group"
+                    id="backToTop">
                     <i class="fas fa-chevron-up mr-2 group-hover:-translate-y-1 transition"></i>
                     Volver al inicio
                 </a>
@@ -1309,22 +1891,22 @@
 
         // Smooth scroll para anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-              e.preventDefault();
-              target.scrollIntoView({ 
-                  behavior: 'smooth', 
-                  block: 'start' 
-              });
-            }
-          });
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
 
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        
+
         if (mobileMenuBtn && mobileMenu) {
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
@@ -1353,11 +1935,11 @@
 
         // Add hover effects to all cards
         document.querySelectorAll('.shine').forEach(card => {
-            card.addEventListener('mouseenter', function() {
+            card.addEventListener('mouseenter', function () {
                 this.style.boxShadow = '0 20px 40px rgba(22, 163, 74, 0.15)';
             });
-            
-            card.addEventListener('mouseleave', function() {
+
+            card.addEventListener('mouseleave', function () {
                 this.style.boxShadow = '';
             });
         });
@@ -1365,7 +1947,7 @@
         // Loading animation
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
-            
+
             // Add loading animation
             const loading = document.createElement('div');
             loading.id = 'pageLoader';
@@ -1377,7 +1959,7 @@
                 </div>
             `;
             document.body.appendChild(loading);
-            
+
             // Remove loading after 1 second
             setTimeout(() => {
                 loading.style.opacity = '0';
@@ -1388,4 +1970,5 @@
         });
     </script>
 </body>
+
 </html>
